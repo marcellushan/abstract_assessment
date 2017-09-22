@@ -112,6 +112,7 @@ class IAbstractController extends Controller
         $record = $model::find($id);
         $data = $request->except(['_token','_method']);
         $record->fill($data);
+//        dd($record);
         echo $changed = $record->save();
     }
 

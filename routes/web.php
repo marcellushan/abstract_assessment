@@ -19,3 +19,4 @@ Route::resource('goal', 'GoalController');
 Route::resource('course', 'CourseController');
 Route::resource('assessor', 'AssessorController');
 Route::resource('slo', 'SloController');
+Route::resource('team', 'TeamController');
