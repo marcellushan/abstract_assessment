@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{URL::to('/')}}/css/bootswatch.min.css">
-    <link rel="stylesheet" href="{{URL::to('/')}}/css/styles.css">
+    <link rel="stylesheet" href="{{URL::to('/')}}/css/assessment.css">
     <link rel="stylesheet" href="{{URL::to('/')}}/css/printing.css">
     <script src="{{URL::to('/')}}/jquery/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webshim/1.16.0/dev/polyfiller.js"></script>

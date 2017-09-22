@@ -35,7 +35,7 @@ class IAbstractController extends Controller
     {
 //        $model_name = 'App\\' . ucfirst($this->category);
         $model = new $this->model_name;
-        $records = $model->get();
+        $records = $model->orderBy('name')->get();
 
         return view($this->category . '.index')->with(compact('records'));
         dd($model->get());
@@ -59,11 +59,12 @@ class IAbstractController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->except('_token');
+//        dd($request);
         $model = new $this->model_name($data);
         $model->save();
 //        $record = $model;
-        return redirect('assessment/' . $model->id);
+        return redirect( $this->category  . '/' . $model->id);
 
     }
 
@@ -109,7 +110,7 @@ class IAbstractController extends Controller
     {
         $model = $this->model_name;
         $record = $model::find($id);
-        $data = $request->except(['_token']);
+        $data = $request->except(['_token','_method']);
         $record->fill($data);
         echo $changed = $record->save();
     }
@@ -124,5 +125,6 @@ class IAbstractController extends Controller
     {
         $model = $this->model_name;
         $record = $model::destroy($id);
+        return redirect( $this->category);
     }
 }

@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::resource('goal', 'GoalController');
+Route::resource('course', 'CourseController');
+Route::resource('assessor', 'AssessorController');
+Route::resource('slo', 'SloController');
