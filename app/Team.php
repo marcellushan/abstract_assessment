@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    public function teams()
+    protected $fillable = ['name','mission'];
+
+    public function assessors()
     {
         return $this->belongsToMany('App\Assessor');
     }
+
 }
