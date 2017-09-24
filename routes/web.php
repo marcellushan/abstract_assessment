@@ -19,3 +19,10 @@ Route::resource('goal', 'GoalController');
 Route::resource('course', 'CourseController');
 Route::resource('assessor', 'AssessorController');
 Route::resource('slo', 'SloController');
+
+//Assessment
+Route::resource('assessment', 'AssessmentController', ['except' => ['create']]);
+Route::get('assessment/create/{team_id}/{assessor_id}', 'AssessmentController@create');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -19,6 +19,13 @@ class CreateAssessorsTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::create('assessor_team', function (Blueprint $table) {
+            $table->integer('assessor_id')->unsigned()->index();
+            $table->integer('team_id')->unsigned()->index();
+//            $table->foreign('family_id')->references('id')->on('families')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -29,5 +36,6 @@ class CreateAssessorsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('assessors');
+        Schema::dropIfExists('assessor_team');
     }
 }
