@@ -19,7 +19,7 @@ Route::resource('goal', 'GoalController');
 Route::resource('course', 'CourseController');
 Route::resource('assessor', 'AssessorController');
 Route::resource('slo', 'SloController');
-<<<<<<< HEAD
+Route::resource('team', 'TeamController');
 
 //Assessment
 Route::resource('assessment', 'AssessmentController', ['except' => ['create']]);
@@ -27,6 +27,4 @@ Route::get('assessment/create/{team_id}/{assessor_id}', 'AssessmentController@cr
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
-Route::resource('team', 'TeamController');
->>>>>>> 9fcfb631a5be55ed6675a53424bdbf384c4f6028
+
