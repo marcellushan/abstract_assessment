@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <textarea class="form-control" name="mission_statement" rows="5">{{$record->mission_statement}}</textarea>
+            <textarea class="form-control" name="mission" rows="5">{{$record->mission}}</textarea>
         </div>
     </div>
     <button type="submit">Submit</button>

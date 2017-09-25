@@ -12,17 +12,18 @@
             <input type="text" name= 'username' class="form-control" value="{{$record->username}}">
         </div>
     </div>
-
+    <h3>Assessor is a member of the following team(s):</h3>
     @forelse($teams as $team)
-        {{$team->name}}
+
+        {{$team->name}}<br>
     @empty
-        {{--Assessor is not a member of any teams--}}
+        Assessor is not a member of any teams
     @endforelse
     <h3>Faculty Units</h3>
     <div class="row">
         @foreach($allTeams as $allTeam)
             <div class="col-md-2">
-                {{$allTeam->name}} <input type="checkbox">
+                {{$allTeam->name}} <input type="checkbox" name="teams[]" value="{{$allTeam->id}}">
             </div>
         @endforeach
     </div>
