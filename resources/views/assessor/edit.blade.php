@@ -1,11 +1,30 @@
 @extends('layouts.app') @section('content')
-<h2>Edit Course</h2>
-{{Form::open(['action' => ['CourseController@update', $record->id],  'method' => 'put'])}}
+<h2>Edit Assessor</h2>
+{{Form::open(['action' => ['AssessorController@update', $record->id],  'method' => 'put'])}}
 <h3>
     <div class="row">
         <div class="col-md-6">
+            <label>Name</label>
             <input type="text" name= 'name' class="form-control" value="{{$record->name}}">
         </div>
+        <div class="col-md-6">
+            <label>Username</label>
+            <input type="text" name= 'username' class="form-control" value="{{$record->username}}">
+        </div>
+    </div>
+
+    @forelse($teams as $team)
+        {{$team->name}}
+    @empty
+        {{--Assessor is not a member of any teams--}}
+    @endforelse
+    <h3>Faculty Units</h3>
+    <div class="row">
+        @foreach($allTeams as $allTeam)
+            <div class="col-md-2">
+                {{$allTeam->name}} <input type="checkbox">
+            </div>
+        @endforeach
     </div>
     <button type="submit">Submit</button>
 </h3>
