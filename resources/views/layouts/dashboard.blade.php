@@ -33,15 +33,9 @@
         <img style="float:left; margin-right: 20px;"  src="{{URL::to('/')}}/images/logo.png"  height="80" width="166" />
         <h1 class="display-1" >Assessment</h1>
     </div>
-    <div class="well">
-        <h2><a href="{{URL::to('/')}}/admin">Return to Admin</a></h2>
-    </div>
+    {{--<div class="main container">--}}
     <div class="well">
 @yield('content')
-</div>
-    <div class="well">
-<h2><a href="{{URL::to('/')}}/admin">Return to Admin</a></h2>
-    </div>
 </body>
 </html>
 

@@ -9,7 +9,7 @@
             <a href="{{$data_type}}/{{$record->id}}/edit">Edit</a>
         </div>
         <div class="col-md-2">
-            <a href="{{$data_type}}/{{$record->id}}/edit">Deactivate</a>
+            <a href="{{$data_type}}/deactivate/{{$record->id}}">Deactivate</a>
         </div>
     </div>
     <br>

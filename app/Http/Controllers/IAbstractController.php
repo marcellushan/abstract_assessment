@@ -81,7 +81,7 @@ class IAbstractController extends Controller
 //        $team = $record->team;
 //        $user = $record->user;
         return view($this->category . '.show')->with(compact('record'));
-        dd($record);
+//        dd($record);
 
     }
 
@@ -112,8 +112,8 @@ class IAbstractController extends Controller
         $record = $model::find($id);
         $data = $request->except(['_token','_method']);
         $record->fill($data);
-//        dd($record);
-        echo $changed = $record->save();
+        $record->save();
+        return redirect($this->category . '/' . $id);
     }
 
     /**
@@ -127,5 +127,15 @@ class IAbstractController extends Controller
         $model = $this->model_name;
         $record = $model::destroy($id);
         return redirect( $this->category);
+    }
+
+    public function deactivate($id)
+    {
+        $model = $this->model_name;
+        $record = $model::find($id);
+//        $data = $request->except(['_token','_method']);
+        $record->inactive = 1;
+        $record->save();
+        return redirect($this->category . '/' . $id);
     }
 }

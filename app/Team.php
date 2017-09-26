@@ -13,4 +13,9 @@ class Team extends Model
         return $this->belongsToMany('App\Assessor');
     }
 
+    public function assessments()
+    {
+        return $this->hasMany('App\Assessment');
+    }
+
 }

@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::resource('goal', 'GoalController');
+Route::get('goal/deactivate/{goal_id}', 'GoalController@deactivate');
+
 Route::resource('course', 'CourseController');
 Route::resource('assessor', 'AssessorController');
 Route::resource('slo', 'SloController');
@@ -31,6 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('dashboard', 'DashboardController@index');
 Route::get('dashboard/{assessor_id}', 'DashboardController@show');
 Route::get('dashboard/assessor/{assessor_id}', 'DashboardController@assessor');
+Route::get('dashboard/team/{team_id}/{assessor_id}', 'DashboardController@team');
 
 Route::get('admin', 'AdminController@index');
 

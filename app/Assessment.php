@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Assessment extends Model
 {
@@ -26,4 +27,5 @@ class Assessment extends Model
     {
         return $this->belongsTo('App\Team');
     }
+
 }

@@ -18,18 +18,23 @@ class AssessmentController extends Controller
      */
     public function index()
     {
-        $assessments = Assessment::get();
-        foreach ($assessments as $assessment) {
-            echo "<pre>";
-//            print_r($assessment);
-            echo $assessment->id;
-            echo "</pre>";
-        }
+//        $assessments = Assessment::get();
+//        foreach ($assessments as $assessment) {
+//            echo "<pre>";
+////            print_r($assessment);
+//            echo $assessment->id;
+//            echo "</pre>";
+//        }
 
-        $assessor = Assessor::find(1);
+//        $assessor = Assessor::find(1);
 //        $assessor->teams()->attach(1);
+$teams = Team::get();
+//        foreach ($teams as $team)
+//            dd($team->assessments);
+//        }
+//        dd($teams);
+        return view('assessment.index')->with(compact('teams'));
 
-//        dd($assessments);
     }
 
     /**

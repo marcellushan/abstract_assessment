@@ -1,7 +1,20 @@
 @extends('layouts.app') @section('content')
-    <div class="title_header"> Assessment</div>
-    @foreach($records as $record)
-        {{$record->id}}</br>
-        @endforeach
+<div class="table-responsive">
+<table class="table table-striped">
+<tr>
+    <th>Unit</th>
+    <th></th>
+</tr>
+@foreach($teams as $team)
+<tr>
+    <td>{{$team->name}}</td>
+   <td> <a href="{{URL::to('/')}}/team/{{$team->id}}"> {{count($team->assessments)}}</a></td>
+</tr>
+@endforeach
+</table>
+</div>
+
+
+
 
 @endsection

@@ -1,4 +1,4 @@
-<h2 align="center">{{ucfirst($data_type)}}s</h2>
+{{--<h2 align="center">{{ucfirst($data_type)}}s</h2>--}}
 @foreach($records as $record)
     <div class="row">
         <div class="col-md-2 col-md-offset-4">

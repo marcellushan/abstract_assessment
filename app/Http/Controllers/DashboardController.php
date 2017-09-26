@@ -23,20 +23,17 @@ class DashboardController extends Controller
 
         $assessor = Assessor::find($id);
         $teams = $assessor->teams;
-//        dd($teams);
+//        dd(count($teams));
         if(count($teams) > 1 )
-        {
-            return view('dashboard.teams', compact('user','teams','assessments'));
-        } elseif (count($teams) < 1 )
+            {
+                return view('dashboard.teams', compact('assessor','teams','assessments'));
+            }
+        elseif (count($teams) < 1 )
         {
             return view('dashboard.no_team');
         }
         else
             return redirect('dashboard/assessor/' . $id );
-
-
-
-
     }
 
     public function assessor($assessor_id)
@@ -55,11 +52,13 @@ class DashboardController extends Controller
         return view('dashboard.assessor', compact('assessor','team','saveds','submitteds'));
     }
 
-    public function team($user_id, $team_id)
+    public function team( $team_id, $assessor_id)
     {
-        $user = \App\User::find($user_id);
-        $assessments = \App\Assessment::where('team_id','=', $team_id)->get();
+        $assessor = \App\Assessor::find($assessor_id);
+//        $assessments = \App\Assessment::where('team_id','=', $team_id)->get();
+        $saveds = Assessment::where('team_id','=', $team_id)->whereNull('submit_date')->get();
+        $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
         $team = \App\Team::find($team_id);
-        return view('dashboard.index', compact('user','team','assessments'));
+        return view('dashboard.one_team', compact('assessor','team','saveds','submitteds'));
     }
 }
