@@ -3,7 +3,7 @@
 @foreach($records as $record)
     <div class="row">
         <div class="col-md-8">
-            <a href = "{{URL::to('/')}}/{{$record->id}}">{{$record->name}}</a>
+            <a href = "{{$data_type}}/{{$record->id}}">{{$record->name}}</a>
         </div>
         <div class="col-md-2">
             <a href="{{$data_type}}/{{$record->id}}/edit">Edit</a>

@@ -20,7 +20,7 @@ class GoalsTest extends TestCase
     public function a_user_can_view_all_goals()
     {
 
-        $this->get('/goals')
+        $this->get('/goal')
             ->assertSee($this->goal->name);
 
     }
@@ -28,7 +28,7 @@ class GoalsTest extends TestCase
     /** @test */
     public function a_user_can_view_a_single_goal()
     {
-        $this->get('/goals/' . $this->goal->id)
+        $this->get('/goal/' . $this->goal->id)
             ->assertSee($this->goal->name);
 
 

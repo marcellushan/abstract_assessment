@@ -32,3 +32,7 @@ Route::get('dashboard', 'DashboardController@index');
 Route::get('dashboard/{assessor_id}', 'DashboardController@show');
 Route::get('dashboard/assessor/{assessor_id}', 'DashboardController@assessor');
 
+Route::get('admin', 'AdminController@index');
+
+
+

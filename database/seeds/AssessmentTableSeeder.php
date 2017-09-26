@@ -14,7 +14,7 @@ class AssessmentTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         for ($x = 0; $x <= 100; $x++) {
             $id = DB::table('assessments')->insertGetId([
-                'assessor_id' => rand(1,34),
+                'assessor_id' => rand(1,30),
                 'period' => 2017,
                 'slo_id' => rand(1,202),
                 'goal_id' => rand(1,7),

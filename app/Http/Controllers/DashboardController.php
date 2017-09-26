@@ -50,6 +50,8 @@ class DashboardController extends Controller
         $saveds = Assessment::where('team_id','=', $team_id)->whereNull('submit_date')->get();
         $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
 //        dd($saveds);
+//        foreach ($saveds as $saved)
+//            dd($saveds);
         return view('dashboard.assessor', compact('assessor','team','saveds','submitteds'));
     }
 
