@@ -13,10 +13,40 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $assessors = Assessor::orderBy('name')->get();
-        $assessors = DB::select('SELECT assessors.id, teams.name as team_name, assessors.name, assessors.username FROM assessors, teams, assessor_team where assessors.id = assessor_team.assessor_id and teams.id = assessor_team.team_id');
-//        dd($assessors);
-        return view('dashboard.index')->with(compact('assessors'));
+        public function index()
+    {
+
+        if(\App::environment() =='local') {
+
+            $username = 'jjones';
+            $givenname = 'Joe';
+            $surname = 'Jones';
+            $department = 'IT';
+            $customer = Customer::firstOrCreate(['email' => $username . '@highlands.edu','name' => $givenname . ' ' . $surname, 'department' => $department]);
+            session(['customer_id' => $customer->id]);
+//            return view('service_request.create')->with(compact('customer'));
+//            return redirect('customer');
+        } else {
+            if(! @$_SESSION['AdfsUserDetails']) {
+                $url='../../marctest/myform.php';
+                echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';
+            } else {
+                $username = $_SESSION['nameIdentifier'];
+                $givenname = implode(" ", $_SESSION['attributes']['givenname']);
+                $surname = implode(" ", $_SESSION['attributes']['surname']);
+                $department = implode(" ", $_SESSION['attributes']['Group']);
+                $customer = Customer::firstOrCreate(['email' => $username . '@highlands.edu','name' => $givenname . ' ' . $surname, 'department' => $department]);
+                $_SESSION['customer_id'] = $customer->id;
+                session(['customer_id' => $customer->id]);
+//                dd($_SESSION['customer_id']);
+//                return view('service_request.create')->with(compact('customer'));
+//                return redirect('customer');
+            }
+        }
+//        $assessors = Assessor::orderBy('name')->get();
+//        $assessors = DB::select('SELECT assessors.id, teams.name as team_name, assessors.name, assessors.username FROM assessors, teams, assessor_team where assessors.id = assessor_team.assessor_id and teams.id = assessor_team.team_id');
+////        dd($assessors);
+//        return view('dashboard.index')->with(compact('assessors'));
     }
     public function show($id)
     {
