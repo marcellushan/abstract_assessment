@@ -65,7 +65,7 @@ class DashboardController extends Controller
 //        }
 //        else
 //            return redirect('dashboard/assessor/' . $id );
-//    }
+    }
 
     public function assessor($assessor_id)
     {
