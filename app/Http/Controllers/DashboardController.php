@@ -13,8 +13,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        public function index()
-    {
+//        public function index()
+//    {
 
         if(\App::environment() =='local') {
 
@@ -22,8 +22,7 @@ class DashboardController extends Controller
             $givenname = 'Joe';
             $surname = 'Jones';
             $department = 'IT';
-            $customer = Customer::firstOrCreate(['email' => $username . '@highlands.edu','name' => $givenname . ' ' . $surname, 'department' => $department]);
-            session(['customer_id' => $customer->id]);
+
 //            return view('service_request.create')->with(compact('customer'));
 //            return redirect('customer');
         } else {
@@ -35,9 +34,10 @@ class DashboardController extends Controller
                 $givenname = implode(" ", $_SESSION['attributes']['givenname']);
                 $surname = implode(" ", $_SESSION['attributes']['surname']);
                 $department = implode(" ", $_SESSION['attributes']['Group']);
-                $customer = Customer::firstOrCreate(['email' => $username . '@highlands.edu','name' => $givenname . ' ' . $surname, 'department' => $department]);
-                $_SESSION['customer_id'] = $customer->id;
-                session(['customer_id' => $customer->id]);
+                dd($username);
+//                $customer = Customer::firstOrCreate(['email' => $username . '@highlands.edu','name' => $givenname . ' ' . $surname, 'department' => $department]);
+//                $_SESSION['customer_id'] = $customer->id;
+//                session(['customer_id' => $customer->id]);
 //                dd($_SESSION['customer_id']);
 //                return view('service_request.create')->with(compact('customer'));
 //                return redirect('customer');
