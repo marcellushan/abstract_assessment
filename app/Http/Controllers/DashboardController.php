@@ -26,10 +26,10 @@ class DashboardController extends Controller
 //            return view('service_request.create')->with(compact('customer'));
 //            return redirect('customer');
         } else {
-            if(! (@$_SESSION['AdfsUserDetails'] || @$_SESSION['nameIdentifier'])) {
-                $url='../../marctest/assessmentform.php';
-                echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';
-            } else {
+//            if(! (@$_SESSION['AdfsUserDetails'] || @$_SESSION['nameIdentifier'])) {
+//                $url='../../marctest/assessmentform.php';
+//                echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';
+//            } else {
                 $username = $_SESSION['nameIdentifier'];
                 $givenname = implode(" ", $_SESSION['attributes']['givenname']);
                 $surname = implode(" ", $_SESSION['attributes']['surname']);
