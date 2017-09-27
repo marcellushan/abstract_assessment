@@ -42,7 +42,7 @@ class DashboardController extends Controller
 //                return view('service_request.create')->with(compact('customer'));
 //                return redirect('customer');
             }
-        }
+//        }
 //        $assessors = Assessor::orderBy('name')->get();
 //        $assessors = DB::select('SELECT assessors.id, teams.name as team_name, assessors.name, assessors.username FROM assessors, teams, assessor_team where assessors.id = assessor_team.assessor_id and teams.id = assessor_team.team_id');
 ////        dd($assessors);
