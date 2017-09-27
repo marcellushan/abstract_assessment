@@ -50,7 +50,7 @@ class DashboardController extends Controller
     }
     public function show($id)
     {
-
+        dd($_SESSION['nameIdentifier']);
         $assessor = Assessor::find($id);
         $teams = $assessor->teams;
 //        dd(count($teams));
