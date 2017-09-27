@@ -48,23 +48,24 @@ class DashboardController extends Controller
 ////        dd($assessors);
 //        return view('dashboard.index')->with(compact('assessors'));
     }
-    public function show($id)
+    public function show($username)
     {
-        dd($_SESSION['nameIdentifier']);
-        $assessor = Assessor::find($id);
-        $teams = $assessor->teams;
-//        dd(count($teams));
-        if(count($teams) > 1 )
-            {
-                return view('dashboard.teams', compact('assessor','teams','assessments'));
-            }
-        elseif (count($teams) < 1 )
-        {
-            return view('dashboard.no_team');
-        }
-        else
-            return redirect('dashboard/assessor/' . $id );
-    }
+//        dd($_SESSION['nameIdentifier']);
+        $assessor = Assessor::where('username', '=',  $username)->firstOrFail();
+        dd($assessor);
+//        $teams = $assessor->teams;
+////        dd(count($teams));
+//        if(count($teams) > 1 )
+//            {
+//                return view('dashboard.teams', compact('assessor','teams','assessments'));
+//            }
+//        elseif (count($teams) < 1 )
+//        {
+//            return view('dashboard.no_team');
+//        }
+//        else
+//            return redirect('dashboard/assessor/' . $id );
+//    }
 
     public function assessor($assessor_id)
     {
