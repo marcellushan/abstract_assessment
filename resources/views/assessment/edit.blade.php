@@ -14,7 +14,15 @@
                 {{Form::radio('goal_id', $goal->id, false)}} {{$goal->name}}</br>
             @endif
         @endforeach
-        @include('partials.textfield', ['label' => 'Associated Course','name' => 'course','field' => 'course','record_type' => 'assessment'])
+        {{--@include('partials.textfield', ['label' => 'Associated Course','name' => 'course','field' => 'course','record_type' => 'assessment'])--}}
+        <h3>Associated Course
+            <select name = "course">
+                <option value="">Select</option>
+                @foreach($courses as $course)
+                    <option value="{{$course->name}}" @if($assessment->course == $course->name) selected @endif >{{$course->name}}</option>
+                @endforeach
+            </select>
+        </h3>
         {{--@include('partials.selected_radio_button', ['label' => 'Student Learning Outcome','name' => 'slos', 'list_type' => 'slo_id','assessment' => 'assessment','selection' => 'slo_id'])--}}
         <h2>Student Learning Outcome</h2>
         @foreach($slos as $slo)
@@ -27,5 +35,5 @@
         {{--@include('partials.radio_button', ['label' => 'Student Learning Outcome','name' => 'slos', 'id' => 'slo_id'])--}}
         @include('partials.textbox', ['label' => 'Method of Outcome Assessment','name' => 'method','field' => 'method','record_type' => 'assessment'])
         @include('partials.textbox', ['label' => 'Performance Measure','name' => 'measure','field' => 'measure','record_type' => 'assessment'])
-        {{Form::submit('Submit')}}
+        <button type="submit" class="btn btn-lg btn-primary">Save Assessment</button>
 @endsection

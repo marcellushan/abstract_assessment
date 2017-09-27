@@ -36,9 +36,12 @@ class IAbstractController extends Controller
 //        $model_name = 'App\\' . ucfirst($this->category);
         $model = new $this->model_name;
         $records = $model->orderBy('name')->get();
+//        foreach ($records as $record)
+//        dd($record);
+//        dd($record);
 
         return view($this->category . '.index')->with(compact('records'));
-        dd($model->get());
+//        dd($records);
     }
 
     /**

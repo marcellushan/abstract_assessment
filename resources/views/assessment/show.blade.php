@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.dashboard') @section('content')
         <div class="title_header"> Assessment</div>
         <div class="title_header"> Unit: {{$team->name}}</div>
         <div class="title_header">Unit Leader: {{$assessor->name}}</div>
@@ -10,10 +10,12 @@
         @include('partials.text', ['label' => 'Method of Outcome Assessment','name' => 'assessment','field' => 'method'])
         @include('partials.text', ['label' => 'Performance Measure','name' => 'assessment','field' => 'measure'])
 
-        {{--<a href="{{URL::to('/')}}/assessment/{{$assessment->id}}/edit">edit</a>--}}
 
-        {{--{{Form::open(['url' => 'assessment/' . $assessment->id ,'method' => 'PUT'])}}--}}
-        {{--{{Form::hidden('submit_date', date("Y-m-d")) }}--}}
-        {{--{{Form::submit('Submit Assessment')}}--}}
-        {{--{{Form::close()}}--}}
+        @if( ! $assessment->submit_date)
+            <h2><a href="{{URL::to('/')}}/assessment/{{$assessment->id}}/edit">Modify Assessment</a></h2>
+        {{Form::open(['url' => 'assessment/' . $assessment->id ,'method' => 'PUT'])}}
+        {{Form::hidden('submit_date', date("Y-m-d")) }}
+            <button type="submit" class="btn btn-lg btn-primary">Submit Assessment</button>
+        {{Form::close()}}
+        @endif
 @endsection

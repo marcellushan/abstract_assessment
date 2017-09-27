@@ -10,6 +10,5 @@
 <h2><a href="{{URL::to('/')}}/slo">SLOs</a> </h2>
 <h4><a href="{{URL::to('/')}}/slo/create">Add New</a> </h4>
 <h2><a href="{{URL::to('/')}}/assessment">Assessments</a> </h2>
-<h4><a href="{{URL::to('/')}}/assessment/create">Add New</a> </h4>
-
+<h4><a href="{{URL::to('/')}}/admin/assessment">Add New</a> </h4>
 @endsection

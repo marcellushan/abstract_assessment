@@ -7,7 +7,13 @@
             <input type="text" name= 'name' class="form-control" value="{{$record->name}}">
         </div>
         <div class="col-md-6">
-            <input type="text" name= 'team_id' class="form-control" value="{{$record->team_id}}">
+           <select name="'team_id">
+                @foreach($teams as $team)
+                    <option value="{{$team}}" @if($team->id == $record->team_id) selected @endif>
+                        {{$team->name}}
+                    </option>
+               @endforeach
+           </select>
         </div>
     </div>
     <button type="submit">Submit</button>

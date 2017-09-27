@@ -1,16 +1,26 @@
 
      $(document).ready(function(){
-         $( "#service_request" ).validate({
+         $( "#assessment" ).validate({
              rules: {
-                 // first_name: {
-                 //     required: true
-                 // },
-                 // last_name: {
-                 //     required: true
-                 // },
-                 // department: {
-                 //     required: true
-                 // },
+                 goal_id: {
+                     required: true
+                 }
+                 ,
+                 course: {
+                     required: true
+                 }
+                 ,
+                 slo_id: {
+                     required: true
+                 }
+                 ,
+                 method: {
+                     required: true
+                 }
+                 ,
+                 measure: {
+                     required: true
+                 }
                  // email: {
                  //     required: true,
                  //     email: true
@@ -25,9 +35,9 @@
                  //     required: true,
                  //     date: true
                  // },
-                 summary: {
-                     required: true
-                 }
+                 // summary: {
+                 //     required: true
+                 // }
              },
              messages: {
                  first_name: "Please enter your first name",

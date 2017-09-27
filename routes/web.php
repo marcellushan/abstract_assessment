@@ -36,6 +36,9 @@ Route::get('dashboard/assessor/{assessor_id}', 'DashboardController@assessor');
 Route::get('dashboard/team/{team_id}/{assessor_id}', 'DashboardController@team');
 
 Route::get('admin', 'AdminController@index');
+Route::get('admin/assessment', 'AdminController@assessment');
+Route::get('admin/assessment_create/{team_id}/{assessor_id}', 'AdminController@assessmentCreate');
+
 
 
 

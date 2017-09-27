@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Assessment;
 use App\Assessor;
+use App\Course;
 use App\Slo;
 use App\Team;
 use App\Goal;
@@ -47,9 +48,10 @@ $teams = Team::get();
         $team = Team::find($team_id);
         $assessor = Assessor::find($assessor_id);
         $goals = Goal::get();
+        $courses = Course::get();
         $slos = Slo::where('team_id', '=', $team_id)->get();
 //        dd($assessor);
-        return view('assessment.create')->with(compact('team','assessor','goals','slos'));
+        return view('assessment.create')->with(compact('team','assessor','goals','courses','slos'));
     }
 
     /**
@@ -60,11 +62,20 @@ $teams = Team::get();
      */
     public function store(Request $request)
     {
+//        $this->validate($request, [
+//            'goal_id' => 'required',
+//            'course' => 'required',
+//            'slo_id' => 'required',
+//            'method' => 'required',
+//            'measure' => 'required',
+////            'author.description' => 'required',
+//        ]);
        $data = $request->except('_token');
 
         $assessment = new Assessment($data);
         $assessment->save();
-        dd($assessment);
+//        dd($assessment);
+        return redirect('assessment/' . $assessment->id);
 
     }
 
@@ -96,11 +107,12 @@ $teams = Team::get();
         $team = Team::find($assessment->team_id);
         $assessor = Assessor::find($assessment->assessor_id);
         $selected_goal = Goal::find($assessment->goal_id);
+        $courses = Course::get();
         $selected_slo = Slo::find($assessment->slo_id);
         $goals = Goal::get();
         $slos = Slo::where('team_id', '=', $team->id)->get();
-//        dd($assessor);
-        return view('assessment.edit')->with(compact('assessment','team','assessor','selected_goal','goals','selected_slo','slos'));
+//        dd($assessment);
+        return view('assessment.edit')->with(compact('assessment','team','assessor','selected_goal','goals','courses','selected_slo','slos'));
     }
 
     /**
@@ -114,7 +126,7 @@ $teams = Team::get();
     {
         $data = $request->except('_token','_method');
         $assessment->update($data);
-//        dd($assessment);
+        return redirect('assessment/' . $assessment->id);
     }
 
     /**

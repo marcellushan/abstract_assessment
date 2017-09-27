@@ -26,7 +26,6 @@
     <script src="{{URL::to('/')}}/jquery/jquery_validation.js"></script>
     <?php $required = 'required' ?>
 </head>
-<body>
 <body  style="background-color:#004990;">
 <div class="container">
     <div class="jumbotron">
