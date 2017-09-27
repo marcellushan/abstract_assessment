@@ -31,6 +31,11 @@ class AssessorController extends IAbstractController
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'username' => 'required|unique:assessors|max:255',
+//            'body' => 'required',
+        ]);
         $data = $request->except('_token');
 //        dd($request);
         $model = new $this->model_name($data);

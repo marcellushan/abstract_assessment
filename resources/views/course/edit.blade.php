@@ -7,8 +7,9 @@
             <input type="text" name= 'name' class="form-control" value="{{$record->name}}">
         </div>
     </div>
-    <button type="submit">Submit</button>
 </h3>
+    <button type="submit">Submit</button>
+
 {{Form::close()}}
 
 @endsection
