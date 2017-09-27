@@ -27,7 +27,7 @@ class DashboardController extends Controller
 //            return redirect('customer');
         } else {
             if(! @$_SESSION['AdfsUserDetails']) {
-                $url='../../marctest/myform.php';
+                $url='../../marctest/assessmentform.php';
                 echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';
             } else {
                 $username = $_SESSION['nameIdentifier'];
