@@ -51,8 +51,12 @@ class DashboardController extends Controller
     public function show($username)
     {
 //        dd($_SESSION['nameIdentifier']);
-        $assessor = Assessor::where('username', '=',  $username)->firstOrFail();
-        dd($assessor);
+//        $assessor = Assessor::where('username', '=',  $username)->firstOrFail();
+
+//        dd($assessor);
+//        $request->session()->put('username', $username);
+session(['username' => $username]);
+dd(session('username'));
 //        $teams = $assessor->teams;
 ////        dd(count($teams));
 //        if(count($teams) > 1 )
