@@ -111,7 +111,11 @@ dd(session('username'));
             session(['username' => $username]);
             $assessor = Assessor::where('username', '=',  $username)->first();
             if(@$assessor->teams) {
-                $destination = 'dashboard/assessor/' . $assessor->id;
+                if(count($assessor->teams) > 0) {
+                    $destination = 'dashboard/assessor/' . $assessor->id;
+                } else {
+                    $destination = 'dashboard/no_team';
+                }
             } else {
                 $destination = 'dashboard/not_auth';
             }
@@ -122,6 +126,11 @@ dd(session('username'));
     public function notAuth ()
     {
         return view('dashboard.not_auth');
+    }
+
+    public function noTeam ()
+    {
+        return view('dashboard.no_team');
     }
 
 }
