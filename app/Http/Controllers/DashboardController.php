@@ -110,7 +110,7 @@ dd(session('username'));
        } else {
             session(['username' => $username]);
             $assessor = Assessor::where('username', '=',  $username)->first();
-            if($assessor->teams) {
+            if(@$assessor->teams) {
                 $destination = 'dashboard/assessor/' . $assessor->id;
             } else {
                 $destination = 'dashboard/not_auth';
