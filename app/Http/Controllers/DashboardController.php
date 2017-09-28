@@ -109,7 +109,7 @@ dd(session('username'));
             return redirect('https://intranet.highlands.edu/marctest/assessment_auth.php');
         session(['username' => $username]);
         $assessor = Assessor::where('username', '=',  $username)->first();
-        dd($assessor);
+//        dd($assessor);
         if($assessor) {
             return redirect('dashboard/assessor/' . $assessor->id);
             }
