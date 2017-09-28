@@ -13,40 +13,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-//        public function index()
-//    {
 
-        if(\App::environment() =='local') {
-
-            $username = 'jjones';
-            $givenname = 'Joe';
-            $surname = 'Jones';
-            $department = 'IT';
-
-//            return view('service_request.create')->with(compact('customer'));
-//            return redirect('customer');
-        } else {
-//            if(! (@$_SESSION['AdfsUserDetails'] || @$_SESSION['nameIdentifier'])) {
-//                $url='../../marctest/assessmentform.php';
-//                echo '<META HTTP-EQUIV=REFRESH CONTENT="1; '.$url.'">';
-//            } else {
-                $username = $_SESSION['nameIdentifier'];
-                $givenname = implode(" ", $_SESSION['attributes']['givenname']);
-                $surname = implode(" ", $_SESSION['attributes']['surname']);
-                $department = implode(" ", $_SESSION['attributes']['Group']);
-                dd($username);
-//                $customer = Customer::firstOrCreate(['email' => $username . '@highlands.edu','name' => $givenname . ' ' . $surname, 'department' => $department]);
-//                $_SESSION['customer_id'] = $customer->id;
-//                session(['customer_id' => $customer->id]);
-//                dd($_SESSION['customer_id']);
-//                return view('service_request.create')->with(compact('customer'));
-//                return redirect('customer');
-            }
-//        }
 //        $assessors = Assessor::orderBy('name')->get();
-//        $assessors = DB::select('SELECT assessors.id, teams.name as team_name, assessors.name, assessors.username FROM assessors, teams, assessor_team where assessors.id = assessor_team.assessor_id and teams.id = assessor_team.team_id');
-////        dd($assessors);
-//        return view('dashboard.index')->with(compact('assessors'));
+        $assessors = DB::select('SELECT assessors.id, teams.name as team_name, assessors.name, assessors.username FROM assessors, teams, assessor_team where assessors.id = assessor_team.assessor_id and teams.id = assessor_team.team_id');
+//        dd($assessors);
+        return view('dashboard.index')->with(compact('assessors'));
     }
     public function show($assessor_id)
     {
@@ -56,24 +27,24 @@ class DashboardController extends Controller
 //        dd($assessor);
 //        $request->session()->put('username', $username);
 //session(['username' => $username]);
-dd(session('username'));
-//        $teams = $assessor->teams;
-////        dd(count($teams));
-//        if(count($teams) > 1 )
-//            {
-//                return view('dashboard.teams', compact('assessor','teams','assessments'));
-//            }
-//        elseif (count($teams) < 1 )
-//        {
-//            return view('dashboard.no_team');
-//        }
-//        else
-//            return redirect('dashboard/assessor/' . $id );
+//dd(session('username'));
+        $teams = $assessor->teams;
+//        dd(count($teams));
+        if(count($teams) > 1 )
+            {
+                return view('dashboard.teams', compact('assessor','teams','assessments'));
+            }
+        elseif (count($teams) < 1 )
+        {
+            return view('dashboard.no_team');
+        }
+        else
+            return redirect('dashboard/assessor/' . $assessor_id );
     }
 
     public function assessor($assessor_id)
     {
-        if( session('username')) {
+//        if( session('username')) {
             $assessor = Assessor::find($assessor_id);
 //        if($assessor->teams;
             $team_id = $assessor->teams->pluck('id')[0];
@@ -86,11 +57,11 @@ dd(session('username'));
 //        foreach ($saveds as $saved)
 //            dd($saveds);
             return view('dashboard.assessor', compact('assessor', 'team', 'saveds', 'submitteds'));
-        }
-        else
-        {
-            return redirect('dashboard/assessor_auth/none');
-        }
+//        }
+//        else
+//        {
+//            return redirect('dashboard/assessor_auth/none');
+//        }
     }
 
     public function team( $team_id, $assessor_id)
