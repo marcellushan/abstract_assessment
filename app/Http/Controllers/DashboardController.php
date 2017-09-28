@@ -75,7 +75,7 @@ dd(session('username'));
     {
         if( session('username')) {
             $assessor = Assessor::find($assessor_id);
-//        $teams = $assessor->teams;
+//        if($assessor->teams;
             $team_id = $assessor->teams->pluck('id')[0];
 
             $team = Team::find($team_id);
@@ -105,15 +105,23 @@ dd(session('username'));
 
     public function assessorAuth( $username)
     {
-       if($username == 'none')
-            return redirect('https://intranet.highlands.edu/marctest/assessment_auth.php');
-        session(['username' => $username]);
-        $assessor = Assessor::where('username', '=',  $username)->first();
-        if($assessor) {
-            return redirect('dashboard/assessor/' . $assessor->id);
+       if($username == 'none') {
+           $destination = 'https://intranet.highlands.edu/marctest/assessment_auth.php';
+       } else {
+            session(['username' => $username]);
+            $assessor = Assessor::where('username', '=',  $username)->first();
+            if($assessor->teams) {
+                $destination = 'dashboard/assessor/' . $assessor->id;
+            } else {
+                $destination = 'dashboard/not_auth';
             }
-        return view('dashboard.not_auth');
-
-//            dd($username);
+        }
+        return redirect($destination);
     }
+
+    public function notAuth ()
+    {
+        return view('dashboard.not_auth');
+    }
+
 }

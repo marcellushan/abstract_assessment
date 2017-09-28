@@ -35,6 +35,7 @@ Route::get('dashboard', 'DashboardController@index');
 Route::get('dashboard/assessor/{assessor_id}', 'DashboardController@assessor');
 Route::get('dashboard/team/{team_id}/{assessor_id}', 'DashboardController@team');
 Route::get('dashboard/assessor_auth/{username}', 'DashboardController@assessorAuth');
+Route::get('dashboard/not_auth/', 'DashboardController@notAuth');
 
 Route::get('admin', 'AdminController@index');
 Route::get('admin/assessment', 'AdminController@assessment');
