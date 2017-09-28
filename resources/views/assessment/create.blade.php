@@ -7,7 +7,7 @@
     <form action="{{URL::to('/')}}/assessment" method="post" id="assessment">
         {{ csrf_field() }}
     {{Form::hidden('assessor_id', $assessor->id)}}
-    {{Form::hidden('period', '2017')}}
+    {{Form::hidden('period', '2018')}}
     {{Form::hidden('team_id', $team->id)}}
     @include('partials.radio_button', ['label' => 'College Goal','name' => 'goals', 'id' => 'goal_id', 'required'  => 'required'])
     <h3>Associated Course

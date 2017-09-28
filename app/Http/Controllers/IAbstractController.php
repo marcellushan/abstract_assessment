@@ -24,6 +24,7 @@ class IAbstractController extends Controller
     public function __construct() {
 
         $this->model_name = 'App\\' . ucfirst($this->category);
+        $this->middleware('auth');
 
     }
     /**

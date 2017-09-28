@@ -18,7 +18,7 @@
         @foreach($record->assessments as $assessment)
             <tr>
                 <td>
-                    <a href="{{URL::to('/')}}/assessment/{{$assessment->id}}"> {{$assessment->course}}</a>
+                    <a href="{{URL::to('/')}}/admin/{{$assessment->id}}/edit"> {{$assessment->course}}</a>
                 </td>
                 <td>
                         {{$assessment->slo->name}}

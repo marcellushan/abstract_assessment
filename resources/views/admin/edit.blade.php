@@ -1,10 +1,10 @@
-@extends('layouts.dashboard') @section('content')
+@extends('layouts.app') @section('content')
         <div class="title_header"> Assessment</div>
         <div class="title_header"> Unit: {{$team->name}}</div>
-        <div class="title_header">Unit Leader: {{$assessment->period}}</div>
+        <div class="title_header">Unit Leader: {{$assessment->assessor->name}}</div>
     </div>
     <div class="well">
-        {{Form::open(['url' => 'assessment/' . $assessment->id,'method' => 'PUT'])}}
+        {{Form::open(['url' => 'admin/' . $assessment->id,'method' => 'PUT'])}}
         {{--@include('partials.selected_radio_button', ['label' => 'College Goal','name' => 'goals', 'list_type' => 'goal_id','assessment' => 'record','selection' => 'goal_id'])--}}
         <h2>Goals</h2>
         @foreach($goals as $goal)

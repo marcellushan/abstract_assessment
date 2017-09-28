@@ -17,8 +17,9 @@ class GoalsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_view_all_goals()
+    public function a_logged_in_user_can_view_all_goals()
     {
+        $this->actingAs(factory('App\User')->create());
 
         $this->get('/goal')
             ->assertSee($this->goal->name);
@@ -26,8 +27,9 @@ class GoalsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_view_a_single_goal()
+    public function a_logged_in_user_can_view_a_single_goal()
     {
+        $this->actingAs(factory('App\User')->create());
         $this->get('/goal/' . $this->goal->id)
             ->assertSee($this->goal->name);
 

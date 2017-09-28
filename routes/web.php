@@ -41,6 +41,8 @@ Route::get('dashboard/no_team/', 'DashboardController@noTeam');
 Route::get('admin', 'AdminController@index');
 Route::get('admin/assessment', 'AdminController@assessment');
 Route::get('admin/assessment_create/{team_id}/{assessor_id}', 'AdminController@assessmentCreate');
+Route::get('admin/{assessment_id}/edit', 'AdminController@edit');
+Route::put('admin/{assessment_id}', 'AdminController@update');
 
 
 

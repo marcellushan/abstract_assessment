@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Assessment;
 use App\Assessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Team;
+use App\Goal;
+use App\Course;
+use App\Slo;
 
 class AdminController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
    public function index()
    {
        return view('admin.index');
@@ -29,5 +39,34 @@ class AdminController extends Controller
 //        dd($assessor);
             return view('assessment.create')->with(compact('team','assessor','goals','slos'));
 
+    }
+
+    public function edit($assessment_id)
+    {
+        $assessment = Assessment::find($assessment_id);
+        $team = Team::find($assessment->team_id);
+        $assessor = Assessor::find($assessment->assessor_id);
+        $selected_goal = Goal::find($assessment->goal_id);
+        $courses = Course::get();
+        $selected_slo = Slo::find($assessment->slo_id);
+        $goals = Goal::get();
+        $slos = Slo::where('team_id', '=', $team->id)->get();
+//        dd($team);
+        return view('admin.edit')->with(compact('assessment','team','assessor','selected_goal','goals','courses','selected_slo','slos'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Assessment  $assessment
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $assessment_id)
+    {
+        $assessment = Assessment::find($assessment_id);
+        $data = $request->except('_token','_method');
+        $assessment->update($data);
+        return redirect('assessment');
     }
 }
