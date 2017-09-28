@@ -48,14 +48,14 @@ class DashboardController extends Controller
 ////        dd($assessors);
 //        return view('dashboard.index')->with(compact('assessors'));
     }
-    public function show($username)
+    public function show($assessor_id)
     {
 //        dd($_SESSION['nameIdentifier']);
-//        $assessor = Assessor::where('username', '=',  $username)->firstOrFail();
 
+        $assessor = Assessor::find($assessor_id);
 //        dd($assessor);
 //        $request->session()->put('username', $username);
-session(['username' => $username]);
+//session(['username' => $username]);
 dd(session('username'));
 //        $teams = $assessor->teams;
 ////        dd(count($teams));
@@ -73,18 +73,24 @@ dd(session('username'));
 
     public function assessor($assessor_id)
     {
-        $assessor = Assessor::find($assessor_id);
+        if( session('username')) {
+            $assessor = Assessor::find($assessor_id);
 //        $teams = $assessor->teams;
-        $team_id = $assessor->teams->pluck('id')[0];
+            $team_id = $assessor->teams->pluck('id')[0];
 
-        $team = Team::find($team_id);
+            $team = Team::find($team_id);
 //        dd($team);
-        $saveds = Assessment::where('team_id','=', $team_id)->whereNull('submit_date')->get();
-        $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
+            $saveds = Assessment::where('team_id', '=', $team_id)->whereNull('submit_date')->get();
+            $submitteds = Assessment::where('team_id', '=', $team_id)->whereNotNull('submit_date')->get();
 //        dd($saveds);
 //        foreach ($saveds as $saved)
 //            dd($saveds);
-        return view('dashboard.assessor', compact('assessor','team','saveds','submitteds'));
+            return view('dashboard.assessor', compact('assessor', 'team', 'saveds', 'submitteds'));
+        }
+        else
+        {
+            return redirect('dashboard/assessor_auth/none');
+        }
     }
 
     public function team( $team_id, $assessor_id)
@@ -95,5 +101,15 @@ dd(session('username'));
         $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
         $team = \App\Team::find($team_id);
         return view('dashboard.one_team', compact('assessor','team','saveds','submitteds'));
+    }
+
+    public function assessorAuth( $username)
+    {
+       if($username == 'none')
+            return redirect('https://intranet.highlands.edu/marctest/assessment_auth.php');
+        session(['username' => $username]);
+        $assessor = Assessor::where('username', '=',  $username)->first();
+        return redirect('dashboard/assessor/' . $assessor->id);
+//            dd($username);
     }
 }
