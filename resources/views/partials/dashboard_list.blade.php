@@ -1,7 +1,7 @@
-<h2>Assessor {{$assessor->name}} </h2>
-<h2>Team {{$team->name}}</h2>
-<h3> Saved Assessments</h3>
+<h2>Assessor: <span class="not_bold"> {{$assessor->name}} </span></h2>
+<h2>Team: {{$team->name}}</h2>
 @if(count($saveds) > 0)
+    <h3> Saved Assessments</h3>
     <h4 class="table-responsive">
         <table class="table table-condensed">
             <tr>
@@ -27,8 +27,9 @@
             @endif
         </table>
     </h4>
-    <h3> Submitted Assessments</h3>
+
     @if(count($submitteds) > 0)
+        <h3> Submitted Assessments</h3>
         <h4 class="table-responsive">
             <table class="table table-condensed">
                 <tr>
@@ -54,4 +55,4 @@
                 @endif
             </table>
         </h4>
-    <a href="{{URL::to('/')}}/assessment/create/{{$team->id}}/{{$assessor->id}}">Create New Assessment</a>
+    <a href="{{URL::to('/')}}/assessment/create/{{$team->id}}/{{$assessor->id}}" class="btn btn-primary btn-lg" role=""button">Create New Assessment</a>

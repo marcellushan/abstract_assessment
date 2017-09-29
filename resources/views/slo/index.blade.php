@@ -1,5 +1,13 @@
 @extends('layouts.app') @section('content')
     <h2>SLOs</h2>
+    <div class="row">
+        <h3 class="col-md-8">
+            Summary
+        </h3>
+        <h3 class="col-md-2">
+          Team
+        </h3>
+    </div>
     @foreach($records as $record)
         <div class="row">
             <div class="col-md-8">

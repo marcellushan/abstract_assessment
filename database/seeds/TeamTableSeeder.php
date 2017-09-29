@@ -14,7 +14,7 @@ class TeamTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         for ($x = 0; $x <= 20; $x++) {
             $id = DB::table('teams')->insertGetId([
-                'name' => $faker->sentence,
+                'name' => $faker->word,
                 'mission' => $faker->sentence,
 
             ]);
