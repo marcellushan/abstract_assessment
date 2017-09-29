@@ -19,10 +19,10 @@ class AccessController extends Controller
                 if(count($assessor->teams) > 0) {
                     $destination = 'dashboard/assessor/' . $assessor->id;
                 } else {
-                    $destination = 'dashboard/no_team';
+                    $destination = 'access/no_team';
                 }
             } else {
-                $destination = 'dashboard/not_auth';
+                $destination = 'access/not_auth';
             }
         }
         return redirect($destination);
@@ -32,4 +32,10 @@ class AccessController extends Controller
     {
         return view('dashboard.not_auth');
     }
+
+    public function noTeam ()
+    {
+        return view('dashboard.no_team');
+    }
+
 }
