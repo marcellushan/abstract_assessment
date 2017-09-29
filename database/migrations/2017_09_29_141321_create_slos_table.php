@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAssessorsTable extends Migration
+class CreateSlosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAssessorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('assessors', function (Blueprint $table) {
+        Schema::create('slos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username');
             $table->string('name');
+            $table->integer('team_id');
+            $table->boolean('inactive');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateAssessorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assessors');
+        Schema::dropIfExists('slos');
     }
 }

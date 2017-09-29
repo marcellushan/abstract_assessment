@@ -16,7 +16,7 @@ class SloTableSeeder extends Seeder
             $id = DB::table('slos')->insertGetId([
                 'name' => $faker->sentence,
                 'inactive' => 0,
-                'team_id' => rand(200,300),
+                'team_id' => rand(1,20),
             ]);
         }
     }

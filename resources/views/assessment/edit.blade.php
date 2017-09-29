@@ -1,7 +1,7 @@
 @extends('layouts.dashboard') @section('content')
         <div class="title_header"> Assessment</div>
         <div class="title_header"> Unit: {{$team->name}}</div>
-        <div class="title_header">Unit Leader: {{$assessment->period}}</div>
+        <div class="title_header">Unit Leader: {{$assessor->name}}</div>
     </div>
     <div class="well">
         {{Form::open(['url' => 'assessment/' . $assessment->id,'method' => 'PUT'])}}
