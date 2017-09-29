@@ -85,10 +85,10 @@ class DashboardController extends Controller
                 if(count($assessor->teams) > 0) {
                     $destination = 'dashboard/assessor/' . $assessor->id;
                 } else {
-                    $destination = 'dashboard/no_team';
+                    $destination = 'no_team';
                 }
             } else {
-                $destination = 'dashboard/not_auth';
+                $destination = 'not_auth';
             }
         }
         return redirect($destination);
