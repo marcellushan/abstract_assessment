@@ -19,11 +19,14 @@ class AssessorTest extends TestCase
     /** @test */
     public function assessor_has_a_username()
     {
-//        $this->actingAs(factory('App\User')->create());
+    $this->assertNotNull($this->assessor->username);
 
-//        $this->get('/goal')
-//            ->assertSee($this->goal->name);
-    $this->assert
+    }
+
+    /** @test */
+    public function assessor_has_a_name()
+    {
+        $this->assertNotNull($this->assessor->name);
 
     }
 }

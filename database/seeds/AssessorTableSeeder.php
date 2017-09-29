@@ -12,7 +12,7 @@ class AssessorTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for ($x = 0; $x <= 100; $x++) {
+        for ($x = 0; $x <= 30; $x++) {
             $id = DB::table('assessors')->insertGetId([
                 'username' => $faker->userName,
                 'name' => $faker->name(),
