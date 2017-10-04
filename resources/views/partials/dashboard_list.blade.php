@@ -2,7 +2,7 @@
 <h2>Team: {{$team->name}}</h2>
 @if(count($saveds) > 0)
     <h3> Saved Assessments</h3>
-    <h4 class="table-responsive">
+    {{--<div class="table-responsive">--}}
         <table class="table table-condensed">
             <tr>
                 <th width="10%">Course</th>
@@ -26,11 +26,11 @@
             @endforelse
             @endif
         </table>
-    </h4>
+    {{--</div>--}}
+    {{--</div>--}}
 
     @if(count($submitteds) > 0)
         <h3> Submitted Assessments</h3>
-        <h4 class="table-responsive">
             <table class="table table-condensed">
                 <tr>
                     <th width="10%">Course</th>
@@ -54,5 +54,4 @@
                 @endforelse
                 @endif
             </table>
-        </h4>
     <a href="{{URL::to('/')}}/assessment/create/{{$team->id}}/{{$assessor->id}}" class="btn btn-primary btn-lg" role=""button">Create New Assessment</a>

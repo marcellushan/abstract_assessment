@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel='shortcut icon' href='{{URL::to('/')}}/images/favicon.ico' type='image/x-icon'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >--}}
+    <link rel="stylesheet" href="{{URL::to('/')}}/css/bootstrap.min.css">
+    {{--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">--}}
     <link rel="stylesheet" href="{{URL::to('/')}}/css/bootswatch.min.css">
+
     <link rel="stylesheet" href="{{URL::to('/')}}/css/styles.css">
-    <link rel="stylesheet" href="{{URL::to('/')}}/css/assessment.css">
-    <link rel="stylesheet" href="{{URL::to('/')}}/css/printing.css">
+    {{--<link rel="stylesheet" href="{{URL::to('/')}}/css/assessment.csss">--}}
+    {{--<link rel="stylesheet" href="{{URL::to('/')}}/css/printing.css">--}}
     <script src="{{URL::to('/')}}/jquery/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webshim/1.16.0/dev/polyfiller.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
@@ -26,7 +28,8 @@
     <script src="{{URL::to('/')}}/jquery/jquery_validation.js"></script>
     <?php $required = 'required' ?>
 </head>
-<body  style="background-color:#004990;">
+{{--<body  style="background-color:">--}}
+<body>
 <div class="container">
     <div class="jumbotron">
         <img style="float:left; margin-right: 20px;"  src="{{URL::to('/')}}/images/logo.png"  height="80" width="166" />
