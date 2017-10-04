@@ -22,6 +22,8 @@ Route::resource('course', 'CourseController');
 Route::resource('assessor', 'AssessorController');
 Route::resource('slo', 'SloController');
 Route::resource('team', 'TeamController');
+Route::resource('comment', 'CommentController');
+Route::get('comment/by_assessment/{assessment_id}', 'CommentController@byAssessment');
 
 //Assessment
 Route::resource('assessment', 'AssessmentController', ['except' => ['create']]);
@@ -49,6 +51,9 @@ Route::put('admin/{assessment_id}', 'AdminController@update');
 Route::get('access/{username}', 'AccessController@index');
 Route::get('not_auth', 'AccessController@notAuth');
 Route::get('no_team', 'AccessController@noTeam');
+
+Route::get('dashboard/reassessment/{team_id}/{assessor_id}/{reassessment_id}', 'DashboardController@reassessment');
+
 
 
 

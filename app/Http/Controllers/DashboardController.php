@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Assessor;
+use App\Reassessment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Assessment;
 use App\Team;
+use App\Goal;
+use App\Course;
+use App\Slo;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -50,13 +54,14 @@ class DashboardController extends Controller
             $team_id = $assessor->teams->pluck('id')[0];
 
             $team = Team::find($team_id);
-//        dd($team);
+            $reassessments = Reassessment::where('team_id', '=', $team->id)->get();
+//        dd($reassessments);
             $saveds = Assessment::where('team_id', '=', $team_id)->whereNull('submit_date')->get();
             $submitteds = Assessment::where('team_id', '=', $team_id)->whereNotNull('submit_date')->get();
 //        dd($saveds);
 //        foreach ($saveds as $saved)
 //            dd($saveds);
-            return view('dashboard.assessor', compact('assessor', 'team', 'saveds', 'submitteds'));
+            return view('dashboard.assessor', compact('assessor', 'team', 'saveds', 'submitteds','reassessments'));
 //        }
 //        else
 //        {
@@ -102,6 +107,18 @@ class DashboardController extends Controller
     public function noTeam ()
     {
         return view('dashboard.no_team');
+    }
+
+    public function reassessment($team_id, $assessor_id, $reassessment_id)
+    {
+        $team = Team::find($team_id);
+        $assessor = Assessor::find($assessor_id);
+        $goals = Goal::get();
+        $courses = Course::get();
+        $slos = Slo::where('team_id', '=', $team_id)->get();
+//        dd($assessor);
+        return view('assessment.create')->with(compact('team','assessor','goals','courses','slos'));
+
     }
 
 }

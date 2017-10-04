@@ -9,6 +9,8 @@ body {
 }
 
 
+
+
 header {
 	font-size: 1.5em;}
 
@@ -32,6 +34,10 @@ color: #004990;
 
 .radio_list {
 	font-size: 1.1em;
+}
+
+.display-1 {
+	font-size: 2em;
 }
 /*.name, .title, .preview*/
 /*{*/
