@@ -52,7 +52,10 @@ Route::get('access/{username}', 'AccessController@index');
 Route::get('not_auth', 'AccessController@notAuth');
 Route::get('no_team', 'AccessController@noTeam');
 
-Route::get('dashboard/reassessment/{team_id}/{assessor_id}/{reassessment_id}', 'DashboardController@reassessment');
+//Route::get('dashboard/reassessment/{team_id}/{assessor_id}/{reassessment_id}', 'DashboardController@reassessment');
+Route::get('reassessment', 'ReassessmentController@index');
+Route::get('reassessment/create/{team_id}/{assessor_id}/{reassessment_id}', 'ReassessmentController@create');
+Route::post('reassessment', 'ReassessmentController@store');
 
 
 

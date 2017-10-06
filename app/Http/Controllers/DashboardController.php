@@ -54,8 +54,7 @@ class DashboardController extends Controller
             $team_id = $assessor->teams->pluck('id')[0];
 
             $team = Team::find($team_id);
-            $reassessments = Reassessment::where('team_id', '=', $team->id)->get();
-//        dd($reassessments);
+            $reassessments = Reassessment::where('team_id', '=', $team->id)->whereNull('associated_assessment')->get();
             $saveds = Assessment::where('team_id', '=', $team_id)->whereNull('submit_date')->get();
             $submitteds = Assessment::where('team_id', '=', $team_id)->whereNotNull('submit_date')->get();
 //        dd($saveds);
@@ -111,13 +110,14 @@ class DashboardController extends Controller
 
     public function reassessment($team_id, $assessor_id, $reassessment_id)
     {
+        $reassessment = Reassessment::find($reassessment_id);
         $team = Team::find($team_id);
         $assessor = Assessor::find($assessor_id);
         $goals = Goal::get();
         $courses = Course::get();
         $slos = Slo::where('team_id', '=', $team_id)->get();
 //        dd($assessor);
-        return view('assessment.create')->with(compact('team','assessor','goals','courses','slos'));
+        return view('dashboard.reassessment')->with(compact('reassessment','team','assessor','goals','courses','slos'));
 
     }
 

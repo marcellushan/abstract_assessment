@@ -2,7 +2,9 @@
 <h2 align="center">Team</h2>
  <h3>   {{$record->name}}</h3>
     <h4>{{$record->mission}}</h4>
+
     <div class="table-responsive">
+        @if(count($record->assessments))
     <table class="table table-striped">
         <tr>
             <th>
@@ -15,7 +17,8 @@
                 Assessor
             </th>
         </tr>
-        @foreach($record->assessments as $assessment)
+        @endif
+        @forelse($record->assessments as $assessment)
             <tr>
                 <td>
                     <a href="{{URL::to('/')}}/admin/{{$assessment->id}}/edit"> {{$assessment->course}}</a>
@@ -27,7 +30,9 @@
                     {{$assessment->assessor->name}}
                 </td>
             </tr>
-        @endforeach
+        @empty
+            No Assessments for this team
+        @endforelse
     </table>
     </div>
 @endsection

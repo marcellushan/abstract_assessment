@@ -27,5 +27,8 @@
     <div class="col-md-3">
         <h2><a href="{{URL::to('/')}}/comment">Add Comments</a> </h2>
     </div>
+    <div class="col-md-3">
+        <h2><a href="{{URL::to('/')}}/reassessment">Reassessments</a> </h2>
+    </div>
 </div>
 @endsection

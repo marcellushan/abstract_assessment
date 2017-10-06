@@ -2,7 +2,7 @@
 @foreach($records as $record)
     <div class="row">
         <div class="col-md-2 col-md-offset-4">
-            {{$record->name}}
+            <a href="{{$data_type}}/{{$record->id}}">{{$record->name}}</a>
         </div>
         <div class="col-md-2">
             <a href="{{$data_type}}/{{$record->id}}/edit">Edit</a>
