@@ -56,6 +56,7 @@ Route::get('no_team', 'AccessController@noTeam');
 Route::get('reassessment', 'ReassessmentController@index');
 Route::get('reassessment/create/{team_id}/{assessor_id}/{reassessment_id}', 'ReassessmentController@create');
 Route::post('reassessment', 'ReassessmentController@store');
+Route::get('reassessment/{reassessment_id}', 'ReassessmentController@show');
 
 
 

@@ -28,9 +28,10 @@
         </tr>
 @endforeach
 </table>
-
+    @include('partials.dashboard_list')
 </div>
 @else
-@include('partials.dashboard_list')
+    @include('partials.dashboard_list')
+    <a href="{{URL::to('/')}}/assessment/create/{{$team->id}}/{{$assessor->id}}" class="btn btn-primary btn-lg" role=""button">Create New Assessment</a>
 @endif
 @endsection

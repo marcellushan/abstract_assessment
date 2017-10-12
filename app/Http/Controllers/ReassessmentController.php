@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Reassessment;
 use App\Assessor;
 use App\Team;
+use App\Goal;
+use App\Slo;
 
 class ReassessmentController extends Controller
 {
@@ -23,6 +25,18 @@ class ReassessmentController extends Controller
         $team = Team::find($team_id);
         $assessor = Assessor::find($assessor_id);
         return view('reassessment.create')->with(compact('reassessment','team','assessor'));
+
+    }
+
+    public function show($reassessment_id)
+    {
+        $reassessment = Reassessment::find($reassessment_id);
+        $team = Team::find($reassessment->team_id);
+        $assessor = Assessor::find($reassessment->assessor_id);
+        $goal = Goal::find($reassessment->goal_id);
+        $slo = Slo::find($reassessment->slo_id);
+//        dd($selected_goal);
+        return view('reassessment.show')->with(compact('reassessment','team','assessor','goal','slo'));
 
     }
 
