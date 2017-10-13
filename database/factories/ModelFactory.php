@@ -74,3 +74,35 @@ $factory->define(App\Slo::class, function (Faker\Generator $faker){
         'inactive' => 0,
     ];
 });
+
+$factory->define(App\Reassessment::class, function (Faker\Generator $faker){
+
+    return [
+//        'assessor_id' => function () {
+//            return factory('App\Assessor')->create()->id;
+//        },
+        'assessor_id' => rand(1,200),
+        'slo_id' => rand(1,200),
+        'goal_id' => rand(1,7),
+//        return [
+            'team_id' => function () {
+                return factory('App\Team')->create()->id;
+            },
+        'course' => $faker->word,
+        'method' => $faker->sentence,
+        'measure' => $faker->sentence,
+        'floyd' => $faker->sentence,
+        'cartersville' => $faker->sentence,
+        'marietta' => $faker->sentence,
+        'paulding' => $faker->sentence,
+        'heritage' => $faker->sentence,
+        'douglasville' => $faker->sentence,
+        'elearning' => $faker->sentence,
+        'data_summary' => $faker->sentence,
+        'recommended_actions' => $faker->sentence,
+        'results' =>  rand(1,4),
+        'submit_date' =>  $faker->date('Y-m-d'),
+        'complete_date' =>  $faker->date('Y-m-d'),
+
+    ];
+});

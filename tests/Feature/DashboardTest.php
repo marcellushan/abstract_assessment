@@ -28,7 +28,7 @@ class AssessorFeatureTest extends TestCase
 //    }
 
     /** @test */
-    public function assessor_saved_assessments_are_visible_on_dashboard()
+    public function assessor_saved_assessments_are_visible()
     {
         $slo = factory('App\Slo')->create(['team_id' => $this->team->id]);
         $assessment = factory('App\Assessment')->create(['assessor_id' => $this->assessor->id, 'team_id' => $this->team->id , 'slo_id' => $slo->id ]);
@@ -37,13 +37,23 @@ class AssessorFeatureTest extends TestCase
     }
 
     /** @test */
-    public function assessor_submitted_assessments_are_visible_on_dashboard()
+    public function assessor_submitted_assessments_are_visible()
     {
         $slo = factory('App\Slo')->create(['team_id' => $this->team->id]);
         $assessment = factory('App\Assessment')->create(['assessor_id' => $this->assessor->id, 'team_id' => $this->team->id , 'slo_id' => $slo->id, 'submit_date' => date('Y-m-d') ]);
         $response = $this->get('/dashboard/assessor/' . $this->assessor->id)
             ->assertSee($assessment->slo->name);
     }
+
+    /** @test */
+//    public function team_reassessments_are_visible()
+//    {
+//        $reassessment = factory('App\Reassessment')->create(['team_id' => $this->team->id ]);
+//        $slo = factory('App\Slo')->create(['team_id' => $this->team->id]);
+//        $assessment = factory('App\Assessment')->create(['assessor_id' => $this->assessor->id, 'team_id' => $this->team->id , 'slo_id' => $slo->id, 'submit_date' => date('Y-m-d') ]);
+//        $response = $this->get('/dashboard/assessor/' . $this->assessor->id)
+//            ->assertS(1,1);
+//    }
 
 
 

@@ -1,5 +1,5 @@
 @extends('layouts.dashboard') @section('content')
-@if(count($reassessments) > 0)
+@if(count(@$reassessments) > 0)
 <div class="table-responsive">
     <table class="table table-condensed">
         <tr>
