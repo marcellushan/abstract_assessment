@@ -11,10 +11,10 @@
     {{Form::hidden('team_id', $team->id)}}
     @include('partials.radio_button', ['label' => 'College Goal','name' => 'goals', 'id' => 'goal_id', 'required'  => 'required'])
     <h3>Associated Course
-    <select name = "course">
+    <select name = "course_id">
         <option value="">Select</option>
     @foreach($courses as $course)
-        <option value="{{$course->name}}">{{$course->name}}</option>
+        <option value="{{$course->id}}">{{$course->name}}</option>
         @endforeach
         </select>
     </h3>

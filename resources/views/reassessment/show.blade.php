@@ -14,7 +14,7 @@
                 {{$reassessment->goal->name}}
             </div>
         </div>
-        @include('partials.text', ['label' => 'Associated Course','name' => 'reassessment','field' => 'course'])
+        @include('partials.text', ['label' => 'Associated Course','name' => 'course','field' => 'name'])
         <div class="row">
             <div class="col-sm-10">
                 <h2>Student Learning Outcome</h2>

@@ -11,19 +11,14 @@
                     <tr>
                         <th>Unit</th>
                         <th>Course</th>
-                        {{--<th>Assessor</th>--}}
-                        <th>Results</th>
-                        {{--<th>17-18 Assessment?</th>--}}
-
+                        <th>Outcome</th>
                     </tr>
                     @foreach($reassessments as $reassessment)
                             @if(! $reassessment->associated_assessment)
                                 <tr>
                                     <td>{{$reassessment->team->name}}</td>
-                                    <td><a href="{{URL::to('/')}}/reassessment/{{$reassessment->id}}">{{$reassessment->course}}</a></td>
-                                    {{--<td>{{$reassessment->assessor->name}}</td>--}}
-                                    <td>   @if($reassessment->results == 1) Not Meeting Outcome @else Approaching Outcome @endif</td>
-                                    {{--<td>@if($reassessment->associated_assessment)<a href="{{URL::to('/')}}/admin/{{$reassessment->associated_assessment}}/edit">Yes</a> @else No @endif</td>--}}
+                                    <td><a href="{{URL::to('/')}}/reassessment/{{$reassessment->id}}">{{$reassessment->course->name}}</a></td>
+                                    <td>   @if($reassessment->results == 1) Not Meeting @else Approaching @endif</td>
                                 </tr>
                                 @endif
                     @endforeach
@@ -38,20 +33,16 @@
                     <tr>
                         <th>Unit</th>
                         <th>Course</th>
-                        {{--<th>Assessor</th>--}}
-                        <th>Results</th>
-                        {{--<th>17-18 Assessment?</th>--}}
+                        <th>Outcome</th>
                         <th></th>
                     </tr>
                     @foreach($reassessments as $reassessment)
                         @if($reassessment->associated_assessment)
                             <tr>
                                 <td>{{$reassessment->team->name}}</td>
-                                <td><a href="{{URL::to('/')}}/reassessment/{{$reassessment->id}}">{{$reassessment->course}}</a></td>
-                                {{--<td>{{$reassessment->assessor->name}}</td>--}}
-                                <td>   @if($reassessment->results == 1) Not Meeting Outcome @else Approaching Outcome @endif</td>
+                                <td><a href="{{URL::to('/')}}/reassessment/{{$reassessment->id}}">{{$reassessment->course->name}}</a></td>
+                                <td>   @if($reassessment->results == 1) Not Meeting @else Approaching @endif</td>
                                 <td><a href="{{URL::to('/')}}/assessment/{{$reassessment->associated_assessment}}">New Assessment</a></td>
-                                {{--<td>@if($reassessment->associated_assessment)<a href="{{URL::to('/')}}/admin/{{$reassessment->associated_assessment}}/edit">Yes</a> @else No @endif</td>--}}
                             </tr>
                         @endif
                     @endforeach

@@ -20,7 +20,7 @@ class CreateAssessmentsTable extends Migration
             $table->integer('slo_id');
             $table->integer('goal_id');
             $table->integer('team_id');
-            $table->string('course');
+            $table->integer('course_id');
             $table->text('method');
             $table->text('measure');
             $table->date('submit_date')->nullable();

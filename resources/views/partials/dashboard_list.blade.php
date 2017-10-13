@@ -12,7 +12,7 @@
             @forelse ($saveds as $saved)
                 <tr>
                     <td>
-                        <a href="{{URL::to('/')}}/assessment/{{$saved->id}}/edit">{{ $saved->course }}</a>
+                        <a href="{{URL::to('/')}}/assessment/{{$saved->id}}/edit">{{ $saved->course->name }}</a>
                     </td>
                     <td>
                         {{ $saved->slo->name }}
@@ -40,7 +40,7 @@
                 @forelse ($submitteds as $submitted)
                     <tr>
                         <td>
-                            <a href="{{URL::to('/')}}/assessment/{{$submitted->id}}">{{ $submitted->course }}</a>
+                            <a href="{{URL::to('/')}}/assessment/{{$submitted->id}}">{{ $submitted->course->name }}</a>
                         </td>
                         <td>
                             {{ $submitted->slo->name }}

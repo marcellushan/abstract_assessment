@@ -7,11 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class Assessment extends Model
 {
-    protected $fillable = ['assessor_id','period','slo_id','goal_id','team_id','course','method','measure','submit_date'];
+    protected $fillable = ['assessor_id','period','slo_id','goal_id','team_id','course_id','method','measure','submit_date'];
 
     public function assessor()
     {
         return $this->belongsTo('App\Assessor');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
     }
     public function slo()
     {

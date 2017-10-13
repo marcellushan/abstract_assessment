@@ -40,7 +40,7 @@
             {{Form::hidden('assessor_id', $assessor->id)}}
             {{Form::hidden('period', '2018')}}
             {{Form::hidden('team_id', $team->id)}}
-            {{Form::hidden('course', $reassessment->course)}}
+            {{Form::hidden('course_id', $reassessment->course_id)}}
             {{Form::hidden('slo_id', $reassessment->slo->id)}}
             {{Form::hidden('goal_id', $reassessment->goal->id)}}
             {{Form::hidden('reassessment_id', $reassessment->id)}}
@@ -50,7 +50,7 @@
                     {{$reassessment->goal->name}}
                 </div>
             </div>
-            @include('partials.text', ['label' => 'Associated Course','name' => 'reassessment','field' => 'course'])
+            @include('partials.text', ['label' => 'Associated Course','name' => 'course','field' => 'name'])
             <div class="row">
                 <div class="col-sm-10">
                     <h2>Student Learning Outcome</h2>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Assessment;
+use App\Course;
 use Illuminate\Http\Request;
 use App\Reassessment;
 use App\Assessor;
@@ -24,7 +25,8 @@ class ReassessmentController extends Controller
         $reassessment = Reassessment::find($reassessment_id);
         $team = Team::find($team_id);
         $assessor = Assessor::find($assessor_id);
-        return view('reassessment.create')->with(compact('reassessment','team','assessor'));
+        $course = Course::find($reassessment->course_id);
+        return view('reassessment.create')->with(compact('reassessment','team','assessor','course'));
 
     }
 
@@ -32,11 +34,12 @@ class ReassessmentController extends Controller
     {
         $reassessment = Reassessment::find($reassessment_id);
         $team = Team::find($reassessment->team_id);
+        $course = Course::find($reassessment->course_id);
         $assessor = Assessor::find($reassessment->assessor_id);
         $goal = Goal::find($reassessment->goal_id);
         $slo = Slo::find($reassessment->slo_id);
 //        dd($selected_goal);
-        return view('reassessment.show')->with(compact('reassessment','team','assessor','goal','slo'));
+        return view('reassessment.show')->with(compact('reassessment','team','assessor','goal','course','slo'));
 
     }
 

@@ -21,6 +21,11 @@ class Reassessment extends Model
         return $this->belongsTo('App\Goal');
     }
 
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
+    }
+
     public function slo()
     {
         return $this->belongsTo('App\Slo');
