@@ -67,6 +67,33 @@ class AdminController extends Controller
         $assessment = Assessment::find($assessment_id);
         $data = $request->except('_token','_method');
         $assessment->update($data);
-        return redirect('assessment');
+        return redirect('admin/show_assessments');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Assessment  $assessment
+     * @return \Illuminate\Http\Response
+     */
+    public function showAssessments()
+    {
+        $teams = Team::get();
+
+        return view('admin.show_assessments')->with(compact('teams'));
+    }
+
+    public function show($assessment_id)
+    {
+        $assessment = Assessment::find($assessment_id);
+        $team = Team::find($assessment->team_id);
+        $assessor = Assessor::find($assessment->assessor_id);
+        $selected_goal = Goal::find($assessment->goal_id);
+        $selected_course= Course::find($assessment->course_id);
+        $selected_slo = Slo::find($assessment->slo_id);
+
+//        dd($selected_goal);
+        return view('admin.show')->with(compact('assessment','team','assessor','selected_goal','selected_slo','selected_course'));
     }
 }

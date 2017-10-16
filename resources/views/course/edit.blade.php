@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
 <h2>Edit Course</h2>
 {{Form::open(['action' => ['CourseController@update', $record->id],  'method' => 'put'])}}
 <h3>

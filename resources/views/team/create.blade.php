@@ -1,5 +1,14 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
 <h2>Create Team</h2>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 {{Form::open(['url' => 'team'])}}
 <h3>Name
     <div class="row">

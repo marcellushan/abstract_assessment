@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
 <h2>Edit SLO</h2>
 {{Form::open(['action' => ['SloController@update', $record->id],  'method' => 'put'])}}
 <h3>
@@ -7,9 +7,9 @@
             <input type="text" name= 'name' class="form-control" value="{{$record->name}}">
         </div>
         <div class="col-md-6">
-           <select name="'team_id">
+           <select name="team_id">
                 @foreach($teams as $team)
-                    <option value="{{$team}}" @if($team->id == $record->team_id) selected @endif>
+                    <option value="{{$team->id}}" @if($team->id == $record->team_id) selected @endif>
                         {{$team->name}}
                     </option>
                @endforeach

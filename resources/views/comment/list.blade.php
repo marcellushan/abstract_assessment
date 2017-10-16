@@ -13,6 +13,7 @@
 </div>
 <div class="well">
 <h2>Comments</h2>
+        @if(count($comments) > 0)
         <table border="1">
             <tr>
                 <th width="70%">
@@ -25,6 +26,7 @@
                     Comment Date
                 </th>
             </tr>
+            @endif
     @forelse($comments as $comment)
 
                 <tr>

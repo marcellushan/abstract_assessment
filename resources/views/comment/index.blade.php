@@ -29,7 +29,7 @@
             {{$assessment->assessor_name}}
         </td>
         <td>
-            {{$assessment->course}}
+            {{$assessment->course_name}}
         </td>
         <td>
             {{$assessment->slo_name}}

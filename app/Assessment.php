@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Assessment extends Model
 {
-    protected $fillable = ['assessor_id','period','slo_id','goal_id','team_id','course_id','method','measure','submit_date'];
+    protected $fillable = ['assessor_id','period','slo_id','goal_id','team_id','course_id','method','measure','submitted','submit_date'];
 
     public function assessor()
     {

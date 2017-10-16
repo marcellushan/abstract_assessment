@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
 <h2>Create Assessor</h2>
 @if ($errors->any())
     <div class="alert alert-danger">

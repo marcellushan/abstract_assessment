@@ -10,6 +10,21 @@ class SloController extends IAbstractController
 {
     protected $category = 'slo';
 
+
+    public function index()
+    {
+//        $model_name = 'App\\' . ucfirst($this->category);
+        $model = new $this->model_name;
+        $records = $model->orderBy('team_id')->get();
+//        foreach ($records as $record)
+//        dd($record);
+//        dd($record);
+
+        return view($this->category . '.index')->with(compact('records'));
+//        dd($records);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

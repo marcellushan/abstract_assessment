@@ -16,30 +16,18 @@
             <th>
                 Assessor
             </th>
-            <th>
-
-            </th>
-            <th>
-
-            </th>
         </tr>
         @endif
         @forelse($record->assessments as $assessment)
             <tr>
                 <td>
-                    {{$assessment->course->name}}
+                    <a href="{{URL::to('/')}}/reporting/{{$assessment->id}}"> {{$assessment->course->name}}</a>
                 </td>
                 <td>
                         {{$assessment->slo->name}}
                 </td>
                 <td>
                     {{$assessment->assessor->name}}
-                </td>
-                <td>
-                    <a href="{{URL::to('/')}}/admin/{{$assessment->id}}/edit"> Edit</a>
-                </td>
-                <td>
-                    <a href="{{URL::to('/')}}/admin/show/{{$assessment->id}}"> View</a>
                 </td>
             </tr>
         @empty

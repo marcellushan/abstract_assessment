@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
     <h2>New Goal</h2>
     {{Form::open(['url' => 'goal'])}}
         <h3>

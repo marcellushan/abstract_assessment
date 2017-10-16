@@ -6,10 +6,10 @@ $names = $name;
 
 @foreach($$names as $$name)
     <div class="row">
-<div class="col-md-11 radio_list">
+<div class="col-md-9 radio_list">
     {{$$name->name}}
 </div>
-    <div class="col-md-1">
+    <div class="col-md-3">
 {{Form::radio($id, $$name->id)}}
 {{--<input type="radio">--}}
 </div>

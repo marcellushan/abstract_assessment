@@ -62,14 +62,9 @@ $teams = Team::get();
      */
     public function store(Request $request)
     {
-//        $this->validate($request, [
-//            'goal_id' => 'required',
-//            'course' => 'required',
-//            'slo_id' => 'required',
-//            'method' => 'required',
-//            'measure' => 'required',
-////            'author.description' => 'required',
-//        ]);
+        $this->validate($request, [
+            'course_id' => 'required',
+        ]);
        $data = $request->except('_token');
 
         $assessment = new Assessment($data);
@@ -129,6 +124,8 @@ $teams = Team::get();
         $data = $request->except('_token','_method');
         $assessment->update($data);
         return redirect('assessment/' . $assessment->id);
+//        return redirect('dashboard/assessor/' . $assessment->id);
+dd($assessment);
     }
 
     /**

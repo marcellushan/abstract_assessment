@@ -1,9 +1,10 @@
-@extends('layouts.dashboard') @section('content')
+@extends('layouts.app') @section('content')
         <div class="title_header"> Assessment</div>
         <div class="title_header"> Unit: {{$team->name}}</div>
         <div class="title_header">Unit Leader: {{$assessor->name}}</div>
     </div>
     <div class="well">
+        <h2><a class= "btn btn-primary btn-lg" href="{{URL::to('/')}}/reporting/print_assessment/{{$assessment->id}}">Print</a></h2>
         @include('partials.text', ['label' => 'College Goal','name' => 'selected_goal','field' => 'name'])
         @include('partials.text', ['label' => 'Associated Course','name' => 'selected_course','field' => 'name'])
         @include('partials.text', ['label' => 'Student Learning Outcome','name' => 'selected_slo','field' => 'name'])
@@ -19,4 +20,6 @@
             <button type="submit" class="btn btn-lg btn-primary">Submit Assessment</button>
         {{Form::close()}}
         @endif
+
+
 @endsection

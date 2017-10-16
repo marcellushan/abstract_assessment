@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', 'AssessmentController@index');
 
 Route::resource('goal', 'GoalController');
+Route::resource('reporting', 'ReportingController');
+Route::get('reporting/team/{team_id}', 'ReportingController@team');
+Route::get('reporting/print_assessment/{team_id}', 'ReportingController@printAssessment');
+
 Route::get('goal/deactivate/{goal_id}', 'GoalController@deactivate');
 
 Route::resource('course', 'CourseController');
@@ -43,10 +49,12 @@ Route::get('no_team/', 'DashboardController@noTeam');
 //Route::get('dashboard/no_team/', 'DashboardController@noTeam');
 
 Route::get('admin', 'AdminController@index');
+Route::get('admin/show/{assessment_id}', 'AdminController@show');
 Route::get('admin/assessment', 'AdminController@assessment');
 Route::get('admin/assessment_create/{team_id}/{assessor_id}', 'AdminController@assessmentCreate');
 Route::get('admin/{assessment_id}/edit', 'AdminController@edit');
 Route::put('admin/{assessment_id}', 'AdminController@update');
+Route::get('admin/show_assessments', 'AdminController@showAssessments');
 
 Route::get('access/{username}', 'AccessController@index');
 Route::get('not_auth', 'AccessController@notAuth');

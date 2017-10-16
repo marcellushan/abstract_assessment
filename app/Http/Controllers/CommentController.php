@@ -17,7 +17,7 @@ class CommentController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -27,8 +27,9 @@ class CommentController extends Controller
     public function index()
     {
 //      $assessments = DB::
-      $assessments = DB::select('SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course, slos.name as slo_name, submit_date FROM assessments, assessors, teams, slos 
-                                            where assessments.assessor_id = assessors.id and assessments.team_id = teams.id and assessments.slo_id = slos.id');
+      $assessments = DB::select('SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date 
+                                FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id 
+                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id');
 //        dd($assessments);
         return view ('comment.index')->with(compact('assessments'));
 
@@ -58,8 +59,8 @@ class CommentController extends Controller
         $comment->user_id = Auth::id();
         $comment->save();
 //        $record = $model;
-//        return redirect( $this->category  . '/' . $model->id);
-     dd($comment);
+        return redirect( 'comment/by_assessment/' . $request->assessment_id);
+//     dd($comment);
     }
 
     /**

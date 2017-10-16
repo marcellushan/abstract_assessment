@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
         <div class="title_header"> Assessment</div>
         <div class="title_header"> Unit: {{$team->name}}</div>
         <div class="title_header">Unit Leader: {{$assessment->assessor->name}}</div>
@@ -16,10 +16,10 @@
         @endforeach
         {{--@include('partials.textfield', ['label' => 'Associated Course','name' => 'course','field' => 'course','record_type' => 'assessment'])--}}
         <h3>Associated Course
-            <select name = "course">
+            <select name = "course_id">
                 <option value="">Select</option>
                 @foreach($courses as $course)
-                    <option value="{{$course->name}}" @if($assessment->course == $course->name) selected @endif >{{$course->name}}</option>
+                    <option value="{{$course->id}}" @if($assessment->course->name == $course->name) selected @endif >{{$course->name}}</option>
                 @endforeach
             </select>
         </h3>

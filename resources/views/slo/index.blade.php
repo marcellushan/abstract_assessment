@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
     <h2>SLOs</h2>
     <div class="row">
         <h3 class="col-md-8">
@@ -19,9 +19,9 @@
             <div class="col-md-1">
                 <a href="slo/{{$record->id}}/edit">Edit</a>
             </div>
-            <div class="col-md-1">
-                <a href="slo/deactivate/{{$record->id}}">Deactivate</a>
-            </div>
+            {{--<div class="col-md-1">--}}
+                {{--<a href="slo/deactivate/{{$record->id}}">Deactivate</a>--}}
+            {{--</div>--}}
         </div>
         <br>
     @endforeach

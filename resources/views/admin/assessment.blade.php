@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
     <select id="selectbox" name="" onchange="javascript:location.href = this.value;">
         <option>Select</option>
         @foreach($assessors as $assessor)

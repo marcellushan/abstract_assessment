@@ -4,6 +4,15 @@
     <div class="title_header">Unit Leader: {{$assessor->name}}</div>
     </div>
     <div class="well">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <form action="{{URL::to('/')}}/assessment" method="post" id="assessment">
         {{ csrf_field() }}
     {{Form::hidden('assessor_id', $assessor->id)}}

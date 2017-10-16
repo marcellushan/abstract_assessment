@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
     {{Form::open(['action' => ['GoalController@update', $record->id],  'method' => 'put'])}}
     <h2>Edit Goal</h2>
     <h3>

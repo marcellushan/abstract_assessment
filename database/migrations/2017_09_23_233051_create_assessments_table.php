@@ -23,6 +23,7 @@ class CreateAssessmentsTable extends Migration
             $table->integer('course_id');
             $table->text('method');
             $table->text('measure');
+            $table->boolean('submitted')->nullable();
             $table->date('submit_date')->nullable();
             $table->timestamps();
         });

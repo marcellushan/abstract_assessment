@@ -1,7 +1,7 @@
 <h2>Assessor: <span class="not_bold"> {{$assessor->name}} </span></h2>
 <h2>Team: {{$team->name}}</h2>
 @if(count($saveds) > 0)
-    <h3> Saved Assessments</h3>
+    <h3> Draft Assessments</h3>
     {{--<div class="table-responsive">--}}
         <table class="table table-condensed">
             <tr>
@@ -30,7 +30,7 @@
     {{--</div>--}}
 
     @if(count($submitteds) > 0)
-        <h3> Submitted Assessments</h3>
+        <h3> Completed Assessments</h3>
             <table class="table table-condensed">
                 <tr>
                     <th width="10%">Course</th>
