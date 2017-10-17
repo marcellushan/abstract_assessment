@@ -9,7 +9,8 @@
             @foreach($teams as $team)
                 <tr>
                     <td>{{$team->name}}</td>
-                    <td> <a href="{{URL::to('/')}}/team/{{$team->id}}"> {{count($team->assessments)}}</a></td>
+                    <td> <a href="{{URL::to('/')}}/admin/team/{{$team->id}}/1"> {{count($team->assessments->where('submitted','<>', 1))}}</a></td>
+                    <td> <a href="{{URL::to('/')}}/admin/team/{{$team->id}}/2"> {{count($team->assessments->where('submitted','=', 1))}}</a></td>
                 </tr>
             @endforeach
         </table>

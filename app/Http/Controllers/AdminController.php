@@ -96,4 +96,15 @@ class AdminController extends Controller
 //        dd($selected_goal);
         return view('admin.show')->with(compact('assessment','team','assessor','selected_goal','selected_slo','selected_course'));
     }
+
+        public function team($id, $status)
+    {
+        $model = new Team;
+        $record = $model::find($id);
+        ($status== 1 ? $assessment_status = 'draft' : $assessment_status = 'complete');
+//        dd($assessment_status);
+        return view('admin.' . $assessment_status)->with(compact('record'));
+//        dd($record);
+
+    }
 }

@@ -23,4 +23,15 @@ class TeamController extends IAbstractController
         return redirect( $this->category  . '/' . $model->id . '/edit');
 
     }
+
+//    public function status($id, $status= 0)
+//    {
+//        $model = new $this->model_name();
+//        $record = $model::find($id);
+////        $team = $record->team;
+////        $user = $record->user;
+//        return view($this->category . '.show')->with(compact('record', 'status'));
+////        dd($record);
+//
+//    }
 }

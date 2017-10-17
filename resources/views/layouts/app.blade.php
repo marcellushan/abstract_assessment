@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Assessment</title>
+    <title>GHC Assessment Reporting</title>
 
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
 <div class="container">
     <div class="jumbotron">
         <img style="float:left; margin-right: 20px;"  src="{{URL::to('/')}}/images/logo.png"  height="80" width="166" />
-        <h1 class="display-1" >&nbsp;&nbsp;&nbsp;Assessment Reporting</h1>
+        <h1 class="display-1" >&nbsp;&nbsp;&nbsp;<a href="{{URL::to('/')}}"> Assessment Reporting</a></h1>
     </div>
     <div class="well">
 @yield('content')

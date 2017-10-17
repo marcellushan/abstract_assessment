@@ -1,4 +1,4 @@
-@extends('layouts.dashboard') @section('content')
+@extends('layouts.admin') @section('content')
     <div class="title_header"> Create Assessment</div>
     <div class="title_header"> Unit: {{$team->name}}</div>
     <div class="title_header">Unit Leader: {{$assessor->name}}</div>

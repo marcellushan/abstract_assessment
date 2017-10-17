@@ -1,3 +1,13 @@
+<script language="Javascript1.2">
+    <!--
+    function printpage() {
+        window.print();
+    }
+    //-->
+</script>
+
+
+<body onload="printpage()">
 <table width="1020" cellpadding="5" cellspacing="0" border="0"><td align="left" style="font-size: 20px; font-weight: bold;">Office of Strategic Planning, Assessment, &amp; Accreditation</td></tr></table>
 <div style="padding: 20px; width: 990px; text-align: left;">
 
