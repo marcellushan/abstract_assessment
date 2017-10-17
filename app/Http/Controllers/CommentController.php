@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Assessment;
 use App\Assessor;
 use App\Comment;
+use App\Course;
 use App\Goal;
 use App\Slo;
 use App\Team;
@@ -114,10 +115,11 @@ class CommentController extends Controller
         $assessor = Assessor::find($assessment->assessor_id);
         $team = Team::find($assessment->team_id);
         $selected_slo = Slo::find($assessment->slo_id);
+        $selected_course= Course::find($assessment->course_id);
         $selected_goal = Goal::find($assessment->goal_id);
         $comments = Comment::where('assessment_id' ,'=', $assessment_id)->get();
 //        dd($slo);
-        return view ('comment.list')->with(compact('assessment','assessor','team','selected_slo','selected_goal','comments'));
+        return view ('comment.list')->with(compact('assessment','assessor','team','selected_course','selected_slo','selected_goal','comments'));
 
     }
 }

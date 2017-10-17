@@ -8,7 +8,7 @@
     </div>
     <div class="well">
     @include('partials.text', ['label' => 'College Goal','name' => 'selected_goal','field' => 'name'])
-    @include('partials.text', ['label' => 'Associated Course','name' => 'assessment','field' => 'course'])
+    @include('partials.text', ['label' => 'Associated Course','name' => 'selected_course','field' => 'name'])
     @include('partials.text', ['label' => 'Student Learning Outcome','name' => 'selected_slo','field' => 'name'])
     @include('partials.text', ['label' => 'Method of Outcome Assessment','name' => 'assessment','field' => 'method'])
     @include('partials.text', ['label' => 'Performance Measure','name' => 'assessment','field' => 'measure'])
