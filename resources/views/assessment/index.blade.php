@@ -1,5 +1,5 @@
 @extends('layouts.app') @section('content')
-<h1 align="center"><a href="{{URL::to('/')}}/dashboard">Facilitator Login</a></h1>
+<h1 align="center"><a href="{{URL::to('/')}}/dashboard/assessor_auth/none">Facilitator Login</a></h1>
 </div>
 <div class="well">
 <div class="table-responsive">
