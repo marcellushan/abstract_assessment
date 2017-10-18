@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Assessor;
 use App\Reassessment;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Assessment;
@@ -15,6 +16,15 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+
+//    public function __construct(Session $session)
+//    {
+//        $this->session = $session;
+//       if(! $this->session('username'))
+//       return redirect('assessor');
+//    }
+
+
     public function index()
     {
 
@@ -48,24 +58,22 @@ class DashboardController extends Controller
 
     public function assessor($assessor_id)
     {
-//        if( session('username')) {
+        if(session('username'))
+//            dd(session('username'));
+        {
             $assessor = Assessor::find($assessor_id);
-//        if($assessor->teams;
             $team_id = $assessor->teams->pluck('id')[0];
-
+//            dd(session('username'));
             $team = Team::find($team_id);
             $reassessments = Reassessment::where('team_id', '=', $team->id)->whereNull('associated_assessment')->get();
             $saveds = Assessment::where('team_id', '=', $team_id)->whereNull('submit_date')->get();
             $submitteds = Assessment::where('team_id', '=', $team_id)->whereNotNull('submit_date')->get();
-//        dd($saveds);
-//        foreach ($saveds as $saved)
-//            dd($saveds);
             return view('dashboard.assessor', compact('assessor', 'team', 'saveds', 'submitteds','reassessments'));
-//        }
-//        else
-//        {
-//            return redirect('dashboard/assessor_auth/none');
-//        }
+        }
+        else
+        {
+            return redirect('dashboard/assessor_auth/none');
+        }
     }
 
     public function team( $team_id, $assessor_id)
