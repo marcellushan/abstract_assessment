@@ -84,4 +84,21 @@ class AssessorController extends IAbstractController
         $record->save();
         return redirect('assessor/' . $id . '/edit'  );
     }
+
+    public function removeTeam(Request $request)
+    {
+        $model = $this->model_name;
+        $record = $model::find($request->assessor_id);
+        $data = $request->except(['_token','_method','teams']);
+//        dd($request);
+        $record->fill($data);
+        $teams = $request->teams;
+        if(count($teams) > 0) {
+            foreach ($teams as $team)
+                $record->teams()->detach($team);
+        }
+//        dd($team);
+        $record->save();
+        return redirect('assessor/' . $request->assessor_id . '/edit'  );
+    }
 }

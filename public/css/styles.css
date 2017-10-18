@@ -20,8 +20,12 @@ header {
 
 }
 
-.well ,.jumbotron {
+.well {
 background-color: lightcyan;
+}
+
+.jumbotron {
+	background-color: lightcyan;
 }
 
 .title_header
@@ -38,6 +42,10 @@ color: #004990;
 
 .display-1 {
 	font-size: 2em;
+}
+
+.not_bold {
+	font-weight: normal;
 }
 /*.name, .title, .preview*/
 /*{*/

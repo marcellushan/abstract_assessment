@@ -26,6 +26,7 @@ Route::get('goal/deactivate/{goal_id}', 'GoalController@deactivate');
 
 Route::resource('course', 'CourseController');
 Route::resource('assessor', 'AssessorController');
+Route::post('assessor/remove_team', 'AssessorController@removeTeam');
 Route::resource('slo', 'SloController');
 Route::resource('team', 'TeamController');
 Route::resource('comment', 'CommentController');

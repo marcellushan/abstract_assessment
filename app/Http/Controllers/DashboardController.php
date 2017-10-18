@@ -71,11 +71,12 @@ class DashboardController extends Controller
     public function team( $team_id, $assessor_id)
     {
         $assessor = \App\Assessor::find($assessor_id);
-//        $assessments = \App\Assessment::where('team_id','=', $team_id)->get();
+        $team = Team::find($team_id);
+        $reassessments = Reassessment::where('team_id', '=', $team->id)->whereNull('associated_assessment')->get();
         $saveds = Assessment::where('team_id','=', $team_id)->whereNull('submit_date')->get();
         $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
-        $team = \App\Team::find($team_id);
-        return view('dashboard.one_team', compact('assessor','team','saveds','submitteds'));
+//        $team = \App\Team::find($team_id);
+        return view('dashboard.one_team', compact('assessor','team','saveds','submitteds','reassessments'));
     }
 
     public function assessorAuth( $username)

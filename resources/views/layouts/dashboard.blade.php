@@ -36,13 +36,13 @@
         <h1 class="display-1" >&nbsp;&nbsp;&nbsp;Assessment Reporting</h1>
     </div>
     <div class="well">
-        <h2><a href="{{URL::to('/')}}/dashboard/assessor/{{$assessor->id}}">Return to Dashboard</a></h2>
+        <h2><a href="{{URL::to('/')}}/dashboard/{{$assessor->id}}">Return to Dashboard</a></h2>
     </div>
     <div class="well">
         @yield('content')
     </div>
     <div class="well">
-        <h2><a href="{{URL::to('/')}}/dashboard/assessor/{{$assessor->id}}">Return to Dashboard</a></h2>
+        <h2><a href="{{URL::to('/')}}/dashboard/{{$assessor->id}}">Return to Dashboard</a></h2>
     </div>
 </body>
 </html>

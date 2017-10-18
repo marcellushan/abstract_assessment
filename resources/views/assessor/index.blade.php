@@ -18,4 +18,5 @@
     </div>
     <br>
 @endforeach
+{{$records->links()}}
 @endsection

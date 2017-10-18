@@ -51,7 +51,7 @@ class ReassessmentController extends Controller
     $reassessment = Reassessment::find($request->reassessment_id);
     $reassessment->associated_assessment = $assessment->id;
     $reassessment->save();
-    return redirect('dashboard/assessor/' . $assessment->assessor_id);
+    return redirect('dashboard/' . $assessment->assessor_id);
 
     }
 }

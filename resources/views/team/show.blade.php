@@ -1,8 +1,14 @@
 @extends('layouts.admin') @section('content')
-<h2 align="center">Team</h2>
- <h3>   {{$record->name}}</h3>
-    <h4>{{$record->mission}}</h4>
+<h2 align="center">{{$record->name}}</h2>
 
+    <h4 align="center">{{$record->mission}}</h4>
+    <h3 align="center">Team Members</h3>
+    @forelse($record->assessors as $assessor)
+            <div  align="center">{{$assessor->name}}</div>
+        @empty
+        <div  align="center">No one is assigned to this team</div>
+            @endforelse
+<h3>Assessments</h3>
     <div class="table-responsive">
         @if(count($record->assessments))
     <table class="table table-striped">
