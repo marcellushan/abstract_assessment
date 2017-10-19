@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-2">
             {{Form::open(['action' => [ucfirst($data_type) . 'Controller@destroy', $record->id],  'method' => 'delete'])}}
-            <button type="submit">Delete</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
             {{Form::close()}}
         </div>
     </div>

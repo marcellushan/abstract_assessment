@@ -20,7 +20,7 @@ class TeamController extends IAbstractController
         $model = new $this->model_name($data);
         $model->save();
 //        $record = $model;
-        return redirect( $this->category  . '/' . $model->id . '/edit');
+        return redirect( 'team');
 
     }
 

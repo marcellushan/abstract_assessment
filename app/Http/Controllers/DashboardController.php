@@ -58,7 +58,7 @@ class DashboardController extends Controller
 
     public function assessor($assessor_id)
     {
-        if(session('username'))
+        if(session('username') ||  app('env')  == 'local')
 //            dd(session('username'));
         {
             $assessor = Assessor::find($assessor_id);
@@ -84,6 +84,7 @@ class DashboardController extends Controller
         $saveds = Assessment::where('team_id','=', $team_id)->whereNull('submit_date')->get();
         $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
 //        $team = \App\Team::find($team_id);
+//dd($reassessments);
         return view('dashboard.one_team', compact('assessor','team','saveds','submitteds','reassessments'));
     }
 
