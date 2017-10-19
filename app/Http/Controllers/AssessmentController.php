@@ -134,8 +134,9 @@ dd($assessment);
      * @param  \App\Assessment  $assessment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Assessment $assessment)
+    public function destroy($id)
     {
-        //
+        $assessment = Assessment::destroy($id);
+        return redirect( 'admin/delete_assessment');
     }
 }

@@ -117,7 +117,7 @@ class CommentController extends Controller
         $selected_slo = Slo::find($assessment->slo_id);
         $selected_course= Course::find($assessment->course_id);
         $selected_goal = Goal::find($assessment->goal_id);
-        $comments = Comment::where('assessment_id' ,'=', $assessment_id)->get();
+        $comments = Comment::where('assessment_id' ,'=', $assessment_id)->orderBy('created_at', 'desc')->get();
 //        dd($slo);
         return view ('comment.list')->with(compact('assessment','assessor','team','selected_course','selected_slo','selected_goal','comments'));
 

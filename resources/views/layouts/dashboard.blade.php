@@ -33,7 +33,7 @@
 <div class="container">
     <div class="jumbotron">
         <img style="float:left; margin-right: 20px;"  src="{{URL::to('/')}}/images/logo.png"  height="80" width="166" />
-        <h1 class="display-1" >&nbsp;&nbsp;&nbsp;Assessment Reporting</h1>
+        <h1 class="display-1" >&nbsp;&nbsp;&nbsp;<a href="{{URL::to('/')}}"> Assessment Reporting</a></h1>
     </div>
     <div class="well">
         <h2><a href="{{URL::to('/')}}/dashboard/{{$assessor->id}}">Return to Dashboard</a></h2>

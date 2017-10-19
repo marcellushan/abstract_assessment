@@ -20,6 +20,9 @@
 <div class="well">
     <h1 align="center"><a href="{{URL::to('/')}}/admin">Administrator Login</a></h1>
 </div>
+<div class="well">
+    <h1 align="center"><a href="{{URL::to('/')}}/comment">Commenter Login</a></h1>
+</div>
 
 
 @endsection
