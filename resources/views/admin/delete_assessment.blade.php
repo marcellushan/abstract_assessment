@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.admin') @section('content')
 <h1 align="center">Delete Assessments</h1>
 <table>
     <tr>
