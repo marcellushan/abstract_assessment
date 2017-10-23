@@ -6,10 +6,10 @@
             {{$record->name}}
         </div>
         <div class="col-md-2">
-            <a href="{{$data_type}}/{{$record->id}}/edit">Edit</a>
+            <a href="{{$data_type}}/{{$record->id}}/edit"  class="btn btn-warning" role="button">Edit</a>
         </div>
         <div class="col-md-2">
-            <a href="{{$data_type}}/deactivate/{{$record->id}}">Deactivate</a>
+            <a href="{{$data_type}}/deactivate/{{$record->id}}" class="btn btn-danger" role="button">Deactivate</a>
         </div>
     </div>
     <br>

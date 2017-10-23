@@ -25,10 +25,13 @@ Route::get('reporting/print_assessment/{team_id}', 'ReportingController@printAss
 Route::get('goal/deactivate/{goal_id}', 'GoalController@deactivate');
 
 Route::resource('course', 'CourseController');
+Route::get('course/deactivate/{course_id}', 'CourseController@deactivate');
 Route::resource('assessor', 'AssessorController');
 Route::post('assessor/remove_team', 'AssessorController@removeTeam');
+Route::get('assessor/deactivate/{assessor_id}', 'AssessorController@deactivate');
 Route::resource('slo', 'SloController');
 Route::resource('team', 'TeamController');
+Route::get('team/deactivate/{team_id}', 'TeamController@deactivate');
 Route::resource('comment', 'CommentController');
 Route::get('comment/by_assessment/{assessment_id}', 'CommentController@byAssessment');
 

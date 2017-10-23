@@ -36,7 +36,9 @@ class IAbstractController extends Controller
     {
 //        $model_name = 'App\\' . ucfirst($this->category);
         $model = new $this->model_name;
-        $records = $model->orderBy('name')->paginate(20);
+        $records = $model->where('inactive','<>', 1)->orderBy('name')->paginate(20);
+//        $records = $model->orderBy('name')->paginate(20);
+//        dd($records);
 //        foreach ($records as $record)
 //        dd($record);
 //        dd($record);
