@@ -1,9 +1,11 @@
-@extends('layouts.dashboard') @section('content')
+@extends('layouts.app') @section('content')
     <select id="selectbox" name="" onchange="javascript:location.href = this.value;">
         <option>Select</option>
-        @foreach($assessors as $assessor)
-            {{--<option value="{{URL::to('/')}}/user/{{$user->id}}">{{$user->name}}</option>--}}
+        @forelse($assessors as $assessor)
             <option value="{{URL::to('/')}}/dashboard/{{$assessor->id}}"> {{$assessor->name}} - {{$assessor->team_name}}</option>
-        @endforeach
+        @empty
+            No Assessors have been assigned to teams
+            <option value="">No Assessors have been assigned to teams</option>
+        @endforelse
     </select>
 @endsection

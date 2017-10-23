@@ -6,12 +6,12 @@
 <table class="table table-striped">
 <tr>
     <th>Unit</th>
-    <th>Completed</th>
+    <th align="center"><div style="text-align: center"> Completed</div></th>
 </tr>
 @foreach($teams as $team)
 <tr>
     <td>{{$team->name}}</td>
-   <td> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('submitted', '=', 1))}}</a></td>
+   <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('submitted', '=', 1))}}</a></td>
 </tr>
 @endforeach
 </table>
