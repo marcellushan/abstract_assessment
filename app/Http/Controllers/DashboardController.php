@@ -97,7 +97,7 @@ class DashboardController extends Controller
             $assessor = Assessor::where('username', '=',  $username)->first();
             if(@$assessor->teams) {
                 if(count($assessor->teams) > 0) {
-                    $destination = 'dashboard/assessor/' . $assessor->id;
+                    $destination = 'dashboard/' . $assessor->id;
                 } else {
                     $destination = 'no_team';
                 }

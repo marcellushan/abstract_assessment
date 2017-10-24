@@ -15,12 +15,12 @@
         @include('partials.text', ['label' => 'Performance Measure','name' => 'assessment','field' => 'measure'])
 
 
-        @if( ! $assessment->submit_date)
-            <h2><a href="{{URL::to('/')}}/assessment/{{$assessment->id}}/edit">Modify Assessment</a></h2>
-        {{Form::open(['url' => 'assessment/' . $assessment->id ,'method' => 'PUT'])}}
-        {{Form::hidden('submit_date', date("Y-m-d")) }}
-         {{Form::hidden('submitted', '1')}}
-            <button type="submit" class="btn btn-lg btn-primary">Submit Assessment</button>
-        {{Form::close()}}
-        @endif
+        {{--@if( ! $assessment->submit_date)--}}
+            {{--<h2><a href="{{URL::to('/')}}/assessment/{{$assessment->id}}/edit">Modify Assessment</a></h2>--}}
+        {{--{{Form::open(['url' => 'assessment/' . $assessment->id ,'method' => 'PUT'])}}--}}
+        {{--{{Form::hidden('submit_date', date("Y-m-d")) }}--}}
+         {{--{{Form::hidden('submitted', '1')}}--}}
+            {{--<button type="submit" class="btn btn-lg btn-primary">Submit Assessment</button>--}}
+        {{--{{Form::close()}}--}}
+        {{--@endif--}}
 @endsection
