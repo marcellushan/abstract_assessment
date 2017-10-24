@@ -26,7 +26,7 @@
     @endforelse
     </div>
     <p></p>
-    <button type="submit" class="btn btn-primary btn-lg">Update</button>
+    <button type="submit" class="btn btn-primary btn-lg">Remove from Team(s)</button>
     {{Form::close()}}
     {{Form::open(['action' => ['AssessorController@update', $record->id],  'method' => 'put'])}}
     <h3>Faculty Units</h3>
@@ -38,7 +38,7 @@
         @endforeach
     </div>
     <p></p>
-    <button type="submit" class="btn btn-primary btn-lg">Update</button>
+    <button type="submit" class="btn btn-primary btn-lg">Add to team(s)</button>
 </h3>
 {{Form::close()}}
 

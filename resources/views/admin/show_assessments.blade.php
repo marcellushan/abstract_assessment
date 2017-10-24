@@ -1,6 +1,6 @@
 @extends('layouts.admin') @section('content')
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-striped table-bordered table-condensed"  style="width:40%; margin-left: auto; margin-right: auto;">
             <tr>
                 <th>Unit</th>
                 <th>Draft</th>
