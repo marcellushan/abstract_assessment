@@ -63,6 +63,8 @@ Route::resource('slo', 'SloController');
  */
 Route::resource('comment', 'CommentController');
 Route::get('comment/by_assessment/{assessment_id}', 'CommentController@byAssessment');
+Route::get('slo/deactivate/{slo_id}', 'SloController@deactivate');
+Route::get('slo/activate/{slo_id}', 'sloController@activate');
 
 /*
  * Reassessment Controllers

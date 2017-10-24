@@ -49,7 +49,7 @@ $teams = Team::get();
         $assessor = Assessor::find($assessor_id);
         $goals = Goal::where('inactive','<>', 1)->get();
         $courses = Course::where('inactive','<>', 1)->orderBy('name')->get();
-        $slos = Slo::where('team_id', '=', $team_id)->get();
+        $slos = Slo::where('team_id', '=', $team_id)->where('inactive','<>', 1)->get();
 //        dd($assessor);
         return view('assessment.create')->with(compact('team','assessor','goals','courses','slos'));
     }
@@ -107,7 +107,7 @@ $teams = Team::get();
         $courses = Course::where('inactive','<>', 1)->orderBy('name')->get();
         $selected_slo = Slo::find($assessment->slo_id);
         $goals = Goal::where('inactive','<>', 1)->get();
-        $slos = Slo::where('team_id', '=', $team->id)->get();
+        $slos = Slo::where('team_id', '=', $team->id)->where('inactive','<>', 1)->get();
 //        dd($assessment);
         return view('assessment.edit')->with(compact('assessment','team','assessor','selected_goal','goals','courses','selected_slo','slos'));
     }

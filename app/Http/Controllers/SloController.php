@@ -15,12 +15,9 @@ class SloController extends IAbstractController
     {
 //        $model_name = 'App\\' . ucfirst($this->category);
         $model = new $this->model_name;
-        $records = $model->orderBy('team_id')->paginate(20);
-//        foreach ($records as $record)
-//        dd($record);
-//        dd($record);
-
-        return view($this->category . '.index')->with(compact('records'));
+        $records = $model->where('inactive','<>', 1)->orderBy('team_id')->paginate(20);
+        $inactives = $model->where('inactive','=', 1)->orderBy('team_id')->get();
+        return view($this->category . '.index')->with(compact('records','inactives'));
 //        dd($records);
     }
 

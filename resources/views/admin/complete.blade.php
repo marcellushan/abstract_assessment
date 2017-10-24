@@ -5,7 +5,7 @@
 
     <div class="table-responsive">
         @if(count($record->assessments->where('submitted','=', 1) ))
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered table-condensed">
         <tr>
             <th>
                 Course
