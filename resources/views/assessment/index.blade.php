@@ -3,7 +3,7 @@
 </div>
 <div class="well">
 <div class="table-responsive">
-<table class="table table-striped">
+    <table class="table table-striped table-bordered table-condensed"  style="width:40%; margin-left: auto; margin-right: auto;">
 <tr>
     <th>Unit</th>
     <th align="center"><div style="text-align: center"> Completed</div></th>
