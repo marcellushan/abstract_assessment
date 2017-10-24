@@ -4,6 +4,9 @@
         <div class="title_header">Unit Leader: {{$assessor->name}}</div>
     </div>
     <div class="well">
+        @if($assessment->submitted)
+            <h2>Date Submitted : {{$assessment->submit_date}}</h2>
+        @endif
         @include('partials.text', ['label' => 'College Goal','name' => 'selected_goal','field' => 'name'])
         @include('partials.text', ['label' => 'Associated Course','name' => 'selected_course','field' => 'name'])
         @include('partials.text', ['label' => 'Student Learning Outcome','name' => 'selected_slo','field' => 'name'])
@@ -11,7 +14,7 @@
         @include('partials.text', ['label' => 'Performance Measure','name' => 'assessment','field' => 'measure'])
 
 
-        @if( ! $assessment->submit_date)
+        @if( ! $assessment->submitted)
             <h2><a href="{{URL::to('/')}}/assessment/{{$assessment->id}}/edit">Modify Assessment</a></h2>
         {{Form::open(['url' => 'assessment/' . $assessment->id ,'method' => 'PUT'])}}
         {{Form::hidden('submit_date', date("Y-m-d")) }}

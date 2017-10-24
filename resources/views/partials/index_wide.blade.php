@@ -1,5 +1,5 @@
 
-<h2>{{ucfirst($data_type)}}s</h2>
+<h2>Active {{ucfirst($data_type)}}s</h2>
 @foreach($records as $record)
     <div class="row">
         <div class="col-md-8">

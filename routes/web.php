@@ -17,31 +17,64 @@
 
 Route::get('/', 'AssessmentController@index');
 
-Route::resource('goal', 'GoalController');
-Route::resource('reporting', 'ReportingController');
-Route::get('reporting/team/{team_id}', 'ReportingController@team');
-Route::get('reporting/print_assessment/{team_id}', 'ReportingController@printAssessment');
+/*
+ * Assessment Controllers
+ */
+Route::resource('assessment', 'AssessmentController', ['except' => ['create']]);
+Route::get('assessment/create/{team_id}/{assessor_id}', 'AssessmentController@create');
 
-Route::get('goal/deactivate/{goal_id}', 'GoalController@deactivate');
-
-Route::resource('course', 'CourseController');
-Route::get('course/deactivate/{course_id}', 'CourseController@deactivate');
+/*
+ * Assessor Controllers
+ */
 Route::resource('assessor', 'AssessorController');
 Route::post('assessor/remove_team', 'AssessorController@removeTeam');
 Route::get('assessor/deactivate/{assessor_id}', 'AssessorController@deactivate');
-Route::resource('slo', 'SloController');
+Route::get('assessor/activate/{assessor_id}', 'AssessorController@activate');
+
+/*
+ * Goal Controllers
+ */
+Route::resource('goal', 'GoalController');
+Route::get('goal/deactivate/{goal_id}', 'GoalController@deactivate');
+Route::get('goal/activate/{goal_id}', 'GoalController@activate');
+
+/*
+ * Team Controllers
+ */
 Route::resource('team', 'TeamController');
 Route::get('team/deactivate/{team_id}', 'TeamController@deactivate');
+Route::get('team/activate/{team_id}', 'TeamController@activate');
+
+
+/*
+ * Course Controllers
+ */
+Route::resource('course', 'CourseController');
+Route::get('course/deactivate/{course_id}', 'CourseController@deactivate');
+Route::get('course/activate/{course_id}', 'CourseController@activate');
+
+/*
+ * SLO Controllers
+ */
+Route::resource('slo', 'SloController');
+
+/*
+ * Comment Controllers
+ */
 Route::resource('comment', 'CommentController');
 Route::get('comment/by_assessment/{assessment_id}', 'CommentController@byAssessment');
 
-//Assessment
-Route::resource('assessment', 'AssessmentController', ['except' => ['create']]);
-Route::get('assessment/create/{team_id}/{assessor_id}', 'AssessmentController@create');
-Auth::routes();
+/*
+ * Reassessment Controllers
+ */
+Route::get('reassessment', 'ReassessmentController@index');
+Route::get('reassessment/create/{team_id}/{assessor_id}/{reassessment_id}', 'ReassessmentController@create');
+Route::post('reassessment', 'ReassessmentController@store');
+Route::get('reassessment/{reassessment_id}', 'ReassessmentController@show');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+/*
+ * Dashboard Controllers
+ */
 Route::get('dashboard', 'DashboardController@index');
 Route::get('dashboard/{username}', 'DashboardController@show');
 Route::get('dashboard/assessor/{assessor_id}', 'DashboardController@assessor');
@@ -52,6 +85,9 @@ Route::get('dashboard/not/auth', 'DashboardController@notAuth');
 Route::get('dashboard/no/team', 'DashboardController@noTeam');
 //Route::get('dashboard/no_team/', 'DashboardController@noTeam');
 
+/*
+ * Admin Controllers
+ */
 Route::get('admin', 'AdminController@index');
 Route::get('admin/show/{assessment_id}', 'AdminController@show');
 Route::get('admin/assessment', 'AdminController@assessment');
@@ -60,17 +96,27 @@ Route::get('admin/assessment_create/{team_id}/{assessor_id}', 'AdminController@a
 Route::get('admin/{assessment_id}/edit', 'AdminController@edit');
 Route::put('admin/{assessment_id}', 'AdminController@update');
 Route::get('admin/show_assessments', 'AdminController@showAssessments');
-Route::get('admin/delete_assessment', 'AdminController@deleteAssessment');
+Route::get('admin/deactivate_assessment', 'AdminController@deactivateAssessment');
+Route::get('admin/deactivate/{assessment_id}', 'AdminController@deactivate');
+Route::get('admin/activate/{assessment_id}', 'AdminController@activate');
+
+/*
+ * Reporting Controllers
+ */
+Route::resource('reporting', 'ReportingController');
+Route::get('reporting/team/{team_id}', 'ReportingController@team');
+Route::get('reporting/print_assessment/{team_id}', 'ReportingController@printAssessment');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
 
 Route::get('access/{username}', 'AccessController@index');
 Route::get('not_auth', 'AccessController@notAuth');
 Route::get('no_team', 'AccessController@noTeam');
-
-//Route::get('dashboard/reassessment/{team_id}/{assessor_id}/{reassessment_id}', 'DashboardController@reassessment');
-Route::get('reassessment', 'ReassessmentController@index');
-Route::get('reassessment/create/{team_id}/{assessor_id}/{reassessment_id}', 'ReassessmentController@create');
-Route::post('reassessment', 'ReassessmentController@store');
-Route::get('reassessment/{reassessment_id}', 'ReassessmentController@show');
 
 
 

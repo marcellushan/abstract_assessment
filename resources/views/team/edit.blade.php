@@ -8,14 +8,14 @@
         </div>
     </div>
     </h3>
-<h3>
+<h3>Mission Statement
     <div class="row">
         <div class="col-md-6">
             <textarea class="form-control" name="mission" rows="5">{{$record->mission}}</textarea>
         </div>
     </div>
     </h3>
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
 {{Form::close()}}
 
 @endsection

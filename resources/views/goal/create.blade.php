@@ -12,7 +12,7 @@
                 </div>
             </div>
         </h3>
-                <button type="submit">Submit</button>
+                <button type="submit" class="btn btn-lg btn-primary">Submit</button>
 
         {{--{{Form::close}}--}}
 @endsection

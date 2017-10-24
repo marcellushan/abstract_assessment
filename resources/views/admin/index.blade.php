@@ -23,7 +23,7 @@
     <div class="col-md-3">
         <h2><a href="{{URL::to('/')}}/admin/show_assessments">Assessments</a> </h2>
         <h4><a href="{{URL::to('/')}}/admin/assessment">Add New</a> </h4>
-        <h4><a href="{{URL::to('/')}}/admin/delete_assessment">Delete</a> </h4>
+        <h4><a href="{{URL::to('/')}}/admin/deactivate_assessment">Deactivate</a> </h4>
     </div>
     <div class="col-md-3">
         <h2><a href="{{URL::to('/')}}/comment">Add Comments</a> </h2>

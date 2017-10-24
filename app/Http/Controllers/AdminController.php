@@ -84,14 +84,17 @@ class AdminController extends Controller
         return view('admin.show_assessments')->with(compact('teams'));
     }
 
-    public function deleteAssessment()
+    public function deactivateAssessment()
     {
         $assessments = DB::select('SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date 
                                 FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id 
-                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id');
+                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.inactive = 0');
+        $inactives = DB::select('SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date 
+                                FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id 
+                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.inactive = 1');
 //        dd($assessments);
 
-        return view('admin.delete_assessment')->with(compact('assessments'));
+        return view('admin.deactivate_assessment')->with(compact('assessments','inactives'));
     }
 
     public function show($assessment_id)
@@ -116,5 +119,25 @@ class AdminController extends Controller
         return view('admin.' . $assessment_status)->with(compact('record'));
 //        dd($record);
 
+    }
+
+    public function activate($id)
+    {
+        $model = new Assessment;
+        $record = $model::find($id);
+//        $data = $request->except(['_token','_method']);
+        $record->inactive = 0;
+        $record->save();
+        return redirect('admin/deactivate_assessment');
+    }
+
+    public function deactivate($id)
+    {
+        $model = new Assessment;
+        $record = $model::find($id);
+//        $data = $request->except(['_token','_method']);
+        $record->inactive = 1;
+        $record->save();
+        return redirect('admin/deactivate_assessment');
     }
 }

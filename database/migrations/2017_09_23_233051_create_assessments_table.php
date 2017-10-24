@@ -25,6 +25,7 @@ class CreateAssessmentsTable extends Migration
             $table->text('measure');
             $table->boolean('submitted')->nullable();
             $table->date('submit_date')->nullable();
+            $table->boolean('inactive')->nullable();
             $table->timestamps();
         });
 

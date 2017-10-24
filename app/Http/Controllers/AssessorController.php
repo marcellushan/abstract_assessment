@@ -54,7 +54,7 @@ class AssessorController extends IAbstractController
     public function edit($id)
     {
         $model = new $this->model_name();
-        $allTeams = Team::orderBy('name')->get();
+        $allTeams = Team::where('inactive','<>', 1)->orderBy('name')->get();
         $record = $model::find($id);
 //        $record->teams()->attach(1);
         $teams = $record->teams;

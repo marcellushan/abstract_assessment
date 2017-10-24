@@ -37,13 +37,10 @@ class IAbstractController extends Controller
 //        $model_name = 'App\\' . ucfirst($this->category);
         $model = new $this->model_name;
         $records = $model->where('inactive','<>', 1)->orderBy('name')->paginate(20);
-//        $records = $model->orderBy('name')->paginate(20);
-//        dd($records);
-//        foreach ($records as $record)
-//        dd($record);
-//        dd($record);
+        $inactives = $model->where('inactive','=', 1)->orderBy('name')->get();
+//        dd($inactives);
 
-        return view($this->category . '.index')->with(compact('records'));
+        return view($this->category . '.index')->with(compact('records','inactives'));
 //        dd($records);
     }
 
@@ -135,6 +132,16 @@ class IAbstractController extends Controller
         return redirect( $this->category);
     }
 
+    public function activate($id)
+    {
+        $model = $this->model_name;
+        $record = $model::find($id);
+//        $data = $request->except(['_token','_method']);
+        $record->inactive = 0;
+        $record->save();
+        return redirect($this->category);
+    }
+
     public function deactivate($id)
     {
         $model = $this->model_name;
@@ -142,6 +149,6 @@ class IAbstractController extends Controller
 //        $data = $request->except(['_token','_method']);
         $record->inactive = 1;
         $record->save();
-        return redirect($this->category . '/' . $id);
+        return redirect($this->category);
     }
 }

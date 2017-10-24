@@ -4,7 +4,10 @@
         <div class="title_header">Unit Leader: {{$assessor->name}}</div>
     </div>
     <div class="well">
-        {{Form::open(['url' => 'assessment/' . $assessment->id,'method' => 'PUT'])}}
+        {{--{{Form::open(['url' => 'assessment/' . $assessment->id,'method' => 'PUT'])}}--}}
+        <form action="{{URL::to('/')}}/assessment/{{$assessment->id}}" method="post" id="assessment">
+            {{ csrf_field() }}
+            {{Form::hidden('_method', 'PUT')}}
         {{--@include('partials.selected_radio_button', ['label' => 'College Goal','name' => 'goals', 'list_type' => 'goal_id','assessment' => 'record','selection' => 'goal_id'])--}}
         <h2>Goals</h2>
         @foreach($goals as $goal)
@@ -36,4 +39,5 @@
         @include('partials.textbox', ['label' => 'Method of Outcome Assessment','name' => 'method','field' => 'method','record_type' => 'assessment'])
         @include('partials.textbox', ['label' => 'Performance Measure','name' => 'measure','field' => 'measure','record_type' => 'assessment'])
         <button type="submit" class="btn btn-lg btn-primary">Save Assessment</button>
+        </form>
 @endsection
