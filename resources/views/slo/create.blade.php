@@ -18,7 +18,7 @@
                     {{--No&nbsp; <input type="radio" name="inactive" value="0" checked>--}}
                 {{--</h3>--}}
             </div>
-                <button type="submit">Submit</button>
+                <button type="submit" class="btn btn-lg btn-primary">Submit</button>
 
         {{--{{Form::close}}--}}
 @endsection

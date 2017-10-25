@@ -28,7 +28,7 @@
             {{$assessment->assessor_name}}
         </td>
         <td>
-            {{$assessment->course_name}}
+            <a href="show/{{$assessment->id}}"> {{$assessment->course_name}}</a>
         </td>
         <td>
             {{$assessment->slo_name}}
@@ -74,7 +74,7 @@
                 {{$inactive->assessor_name}}
             </td>
             <td>
-                {{$inactive->course_name}}
+                <a href="show/{{$inactive->id}}"> {{$inactive->course_name}}</a>
             </td>
             <td>
                 {{$inactive->slo_name}}
