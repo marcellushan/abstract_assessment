@@ -3,10 +3,14 @@
         <div class="title_header"> Unit: {{$team->name}}</div>
         <div class="title_header">Unit Leader: {{$assessor->name}}</div>
     </div>
-    {{--<div class="well">--}}
-        {{--@include('partials.textbox', ['label' => 'Message to Assessor','name' => 'method'])--}}
-        {{--<button type="submit" class="btn btn-primary btn-lg">Submit</button>--}}
-    {{--</div>--}}
+    <div class="well">
+        <form action="../send_mail" method="post">
+        <input type="hidden" name="assessment_id" value="{{$assessment->id}}">
+            {{ csrf_field() }}
+        @include('partials.textbox', ['label' => 'Message to Assessor','name' => 'return_reason'])
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </form>
+    </div>
     <div class="well">
         @include('partials.text', ['label' => 'College Goal','name' => 'selected_goal','field' => 'name'])
         @include('partials.text', ['label' => 'Associated Course','name' => 'selected_course','field' => 'name'])

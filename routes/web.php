@@ -101,6 +101,7 @@ Route::get('admin/show_assessments', 'AdminController@showAssessments');
 Route::get('admin/deactivate_assessment', 'AdminController@deactivateAssessment');
 Route::get('admin/deactivate/{assessment_id}', 'AdminController@deactivate');
 Route::get('admin/activate/{assessment_id}', 'AdminController@activate');
+Route::post('admin/send_mail', 'AdminController@sendMail');
 
 /*
  * Reporting Controllers

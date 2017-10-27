@@ -10,6 +10,8 @@ use App\Team;
 use App\Goal;
 use App\Course;
 use App\Slo;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -139,5 +141,15 @@ class AdminController extends Controller
         $record->inactive = 1;
         $record->save();
         return redirect('admin/deactivate_assessment');
+    }
+
+    public function sendMail(Request $request)
+    {
+//        Mail::to($request->user())->send(new OrderShipped($order));
+$assessment = Assessment::find($request->assessment_id);
+//$mine = $request->mine;
+//dd($request);
+        Mail::to($assessment->assessor->username . '@highlands.edu')->send(new SendMail($request->return_reason, $request->assessment_id));
+        return redirect('admin/show_assessments');
     }
 }
