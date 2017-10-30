@@ -150,6 +150,8 @@ $assessment = Assessment::find($request->assessment_id);
 //$mine = $request->mine;
 //dd($request);
         Mail::to($assessment->assessor->username . '@highlands.edu')->send(new SendMail($request->return_reason, $request->assessment_id));
+        $assessment->submitted = 0;
+        $assessment->save();
         return redirect('admin/show_assessments');
     }
 }

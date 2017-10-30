@@ -34,6 +34,7 @@ class SendMail extends Mailable
 //        $message = $this->message;
         $return_reason = $this->return_reason;
         return $this->from('assessment@highlands.edu')
+            ->subject('Additional assessment information required')
             ->view('emails.returned')->with(compact('return_reason','assessment'));
     }
 }

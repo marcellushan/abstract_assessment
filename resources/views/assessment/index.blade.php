@@ -2,6 +2,9 @@
 <h1 align="center"><a href="{{URL::to('/')}}/dashboard/assessor_auth/none">Facilitator Login</a></h1>
 </div>
 <div class="well">
+    <h1 align="center"><a href="{{URL::to('/')}}/comment">IE Reviewer Login</a></h1>
+</div>
+<div class="well">
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-condensed"  style="width:40%; margin-left: auto; margin-right: auto;">
 <tr>
@@ -19,9 +22,6 @@
 </div>
 <div class="well">
     <h1 align="center"><a href="{{URL::to('/')}}/admin">Administrator Login</a></h1>
-</div>
-<div class="well">
-    <h1 align="center"><a href="{{URL::to('/')}}/comment">Commenter Login</a></h1>
 </div>
 
 
