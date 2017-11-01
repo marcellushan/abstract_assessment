@@ -27,6 +27,7 @@ Route::get('assessment/create/{team_id}/{assessor_id}', 'AssessmentController@cr
  * Assessor Controllers
  */
 Route::resource('assessor', 'AssessorController');
+Route::get('assessor/list/inactive', 'AssessorController@inactive');
 Route::post('assessor/remove_team', 'AssessorController@removeTeam');
 Route::get('assessor/deactivate/{assessor_id}', 'AssessorController@deactivate');
 Route::get('assessor/activate/{assessor_id}', 'AssessorController@activate');
@@ -57,6 +58,7 @@ Route::get('course/activate/{course_id}', 'CourseController@activate');
  * SLO Controllers
  */
 Route::resource('slo', 'SloController');
+Route::get('slo/list/inactive', 'SloController@inactive');
 
 /*
  * Comment Controllers

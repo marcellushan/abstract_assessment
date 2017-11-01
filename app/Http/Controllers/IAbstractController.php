@@ -44,6 +44,18 @@ class IAbstractController extends Controller
 //        dd($records);
     }
 
+    public function inactive()
+    {
+//        $model_name = 'App\\' . ucfirst($this->category);
+        $model = new $this->model_name;
+        $records = $model->where('inactive','<>', 1)->orderBy('name')->paginate(20);
+        $inactives = $model->where('inactive','=', 1)->orderBy('name')->paginate();
+//        dd($inactives);
+
+        return view($this->category . '.inactive')->with(compact('records','inactives'));
+//        dd($records);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

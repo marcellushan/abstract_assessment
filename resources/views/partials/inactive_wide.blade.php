@@ -6,7 +6,7 @@
             {{$inactive->name}}
         </div>
         <div class="col-xs-2">
-            <a href="{{$data_type}}/activate/{{$inactive->id}}" class="btn btn-danger" role="button">Activate</a>
+            <a href="{{URL::to('/')}}/{{$data_type}}/activate/{{$inactive->id}}" class="btn btn-danger" role="button">Activate</a>
         </div>
     </div>
     <br>

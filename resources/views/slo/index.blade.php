@@ -26,23 +26,8 @@
         </div>
         <br>
     @endforeach
-    <h2>Inactive</h2>
-    @foreach($inactives as $inactive)
-        <div class="row">
-            <div class="col-md-7">
-                {{$inactive->name}}
-            </div>
-            <div class="col-md-2">
-                {{$inactive->team->name}}
-            </div>
-            <div class="col-md-1">
-                <a href="slo/{{$inactive->id}}/edit" class="btn btn-warning" role="button">Edit</a>
-            </div>
-            <div class="col-md-1">
-                <a href="slo/activate/{{$inactive->id}}"  class="btn btn-danger" role="button">Activate</a>
-            </div>
-        </div>
-        <br>
-    @endforeach
+
+    <h3><a href="slo/list/inactive"> Link to Inactive</a></h3>
     {{$records->links()}}
 @endsection
+
