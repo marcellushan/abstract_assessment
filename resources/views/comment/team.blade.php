@@ -1,8 +1,9 @@
 @extends('layouts.app') @section('content')
-
-<h2>{{$team->name}}</h2>
 <table>
     <tr>
+        <th width="10%">
+            Team
+        </th>
         <th width="12%">
             Assessor
         </th>
@@ -21,6 +22,9 @@
     </tr>
 @foreach($assessments as $assessment)
     <tr>
+        <td>
+            {{$assessment->team_name}}
+        </td>
         <td>
             {{$assessment->assessor_name}}
         </td>

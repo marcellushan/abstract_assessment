@@ -59,14 +59,17 @@ Route::get('course/activate/{course_id}', 'CourseController@activate');
  */
 Route::resource('slo', 'SloController');
 Route::get('slo/list/inactive', 'SloController@inactive');
+Route::get('slo/deactivate/{slo_id}', 'SloController@deactivate');
+Route::get('slo/activate/{slo_id}', 'SloController@activate');
 
 /*
  * Comment Controllers
  */
 Route::resource('comment', 'CommentController');
 Route::get('comment/by_assessment/{assessment_id}', 'CommentController@byAssessment');
-Route::get('slo/deactivate/{slo_id}', 'SloController@deactivate');
-Route::get('slo/activate/{slo_id}', 'SloController@activate');
+Route::get('comment/team/{team_id}', 'CommentController@team');
+
+
 
 /*
  * Reassessment Controllers
