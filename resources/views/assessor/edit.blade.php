@@ -15,7 +15,9 @@
     <br>
     <button type="submit" class="btn btn-primary btn-lg">Update Assessor</button>
     </h3>
+{{Form::close()}}
     {{Form::open(['action' => ['AssessorController@removeTeam',  'method' => 'post']])}}
+
     <input type="hidden" name="assessor_id" value="{{$record->id}}">
     <h3>Assessor is a member of the following team(s):</h3>
     <div class="row">
