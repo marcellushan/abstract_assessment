@@ -126,6 +126,11 @@ Route::get('access/{username}', 'AccessController@index');
 Route::get('not_auth', 'AccessController@notAuth');
 Route::get('no_team', 'AccessController@noTeam');
 
+/*
+ * Assessment Controllers
+ */
+Route::resource('final_assessment', 'FinalAssessmentController');
+
 
 
 

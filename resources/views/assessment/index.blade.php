@@ -9,12 +9,14 @@
     <table class="table table-striped table-bordered table-condensed"  style="width:40%; margin-left: auto; margin-right: auto;">
 <tr>
     <th>Unit</th>
-    <th align="center"><div style="text-align: center"> Completed</div></th>
+    <th align="center"><div style="text-align: center"> Initial</div></th>
+    <th align="center"><div style="text-align: center"> Final</div></th>
 </tr>
 @foreach($teams as $team)
 <tr>
     <td>{{$team->name}}</td>
    <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('submitted', '=', 1))}}</a></td>
+    <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('submitted', '=', 2))}}</a></td>
 </tr>
 @endforeach
 </table>
