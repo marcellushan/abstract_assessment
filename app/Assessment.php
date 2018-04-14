@@ -33,4 +33,9 @@ class Assessment extends Model
         return $this->belongsTo('App\Team');
     }
 
+    public function finalAssessment()
+    {
+        return $this->hasOne('App\FinalAssessment');
+    }
+
 }
