@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\FinalAssessment;
+use App\Assessment;
+use App\Assessor;
+use App\Course;
+use App\Slo;
+use App\Team;
+use App\Goal;
 use Illuminate\Http\Request;
 
 class FinalAssessmentController extends Controller
@@ -23,9 +29,19 @@ class FinalAssessmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($assessment_id)
     {
         //
+        $assessment = Assessment::find($assessment_id);
+        $team = Team::find($assessment->team_id);
+        $assessor = Assessor::find($assessment->assessor_id);
+        $selected_goal = Goal::find($assessment->goal_id);
+        $selected_course= Course::find($assessment->course_id);
+        $selected_slo = Slo::find($assessment->slo_id);
+//        dd($assessment);
+        return view('final_assessment.create')->with(compact('assessment','team','assessor',
+        'selected_goal','selected_course','selected_slo'));
+
     }
 
     /**
@@ -36,7 +52,10 @@ class FinalAssessmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $data = $request->except('_token');
+        $final_assessment = new FinalAssessment($data);
+        $final_assessment->save();
     }
 
     /**
@@ -47,7 +66,17 @@ class FinalAssessmentController extends Controller
      */
     public function show(FinalAssessment $finalAssessment)
     {
-        //
+        $assessment = Assessment::find($finalAssessment->assessment_id);
+//        dd($assessment);
+        $team = Team::find($assessment->team_id);
+        $assessor = Assessor::find($assessment->assessor_id);
+        $selected_goal = Goal::find($assessment->goal_id);
+        $selected_course= Course::find($assessment->course_id);
+        $selected_slo = Slo::find($assessment->slo_id);
+
+//        dd($finalAssessment);
+        return view('final_assessment.show')->with(compact('finalAssessment','assessment','team','assessor','selected_goal','selected_slo'
+            ,'selected_course'));
     }
 
     /**

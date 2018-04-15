@@ -91,7 +91,8 @@ $teams = Team::get();
         $selected_slo = Slo::find($assessment->slo_id);
 
 //        dd($selected_goal);
-        return view('assessment.show')->with(compact('assessment','team','assessor','selected_goal','selected_slo','selected_course'));
+        return view('assessment.show')->with(compact('assessment','team','assessor','selected_goal','selected_slo'
+        ,'selected_course'));
     }
 
     /**
