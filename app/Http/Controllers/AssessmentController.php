@@ -47,10 +47,11 @@ $teams = Team::get();
     {
         $team = Team::find($team_id);
         $assessor = Assessor::find($assessor_id);
-        $goals = Goal::where('inactive','<>', 1)->get();
-        $courses = Course::where('inactive','<>', 1)->orderBy('name')->get();
+//        $goals = Goal::where('inactive','=', NULL->get();
+        $goals = Goal::get();
+        $courses = Course::orderBy('name')->get();
         $slos = Slo::where('team_id', '=', $team_id)->where('inactive','<>', 1)->get();
-//        dd($assessor);
+//        dd($goals);
         return view('assessment.create')->with(compact('team','assessor','goals','courses','slos'));
     }
 
