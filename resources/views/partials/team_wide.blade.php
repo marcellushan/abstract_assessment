@@ -9,6 +9,13 @@
             <a href="{{$data_type}}/{{$record->id}}/edit"  class="btn btn-warning" role="button">Edit</a>
         </div>
         <div class="col-sm-2">
+            @if($record->final)
+            <a href="final_assessment/initial/{{$record->id}}"  class="btn btn-primary" role="button">Final</a>
+            @else
+            <a href="inal_assessment/final/{{$record->id}}"  class="btn btn-info" role="button">Initial</a>
+            @endif
+        </div>
+        <div class="col-sm-2">
             <a href="{{$data_type}}/deactivate/{{$record->id}}" class="btn btn-danger" role="button">Deactivate</a>
         </div>
     </div>

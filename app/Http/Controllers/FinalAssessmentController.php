@@ -52,10 +52,12 @@ class FinalAssessmentController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+//        dd($request);
         $data = $request->except('_token');
         $final_assessment = new FinalAssessment($data);
         $final_assessment->save();
+        return redirect('final_assessment/' . $final_assessment->id);
+
     }
 
     /**
