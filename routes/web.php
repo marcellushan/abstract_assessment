@@ -45,6 +45,10 @@ Route::get('goal/activate/{goal_id}', 'GoalController@activate');
 Route::resource('team', 'TeamController');
 Route::get('team/deactivate/{team_id}', 'TeamController@deactivate');
 Route::get('team/activate/{team_id}', 'TeamController@activate');
+Route::get('team/initial/{team_id}', 'TeamController@changeInitial');
+Route::get('team/final/{team_id}', 'TeamController@changeFinal');
+
+
 
 
 /*

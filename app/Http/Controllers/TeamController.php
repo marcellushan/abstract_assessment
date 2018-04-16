@@ -24,5 +24,26 @@ class TeamController extends IAbstractController
 
     }
 
+    public function changeInitial($team_id)
+    {
+
+        $team = Team::find($team_id);
+//        dd($team);
+        $team->final = 0;
+        $team->save();
+        return redirect( 'team');
+    }
+
+    public function changeFinal($team_id)
+    {
+
+        $team = Team::find($team_id);
+//        dd($team);
+        $team->final = 1;
+        $team->save();
+        return redirect( 'team');
+    }
+
+
 
 }
