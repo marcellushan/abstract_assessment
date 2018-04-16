@@ -1,4 +1,4 @@
 @extends('layouts.dashboard') @section('content')
-    final
-    @include('partials.dashboard_list')
+
+    @include('partials.final_list')
 @endsection
