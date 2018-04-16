@@ -87,10 +87,11 @@ class DashboardController extends Controller
         $assessor = \App\Assessor::find($assessor_id);
         $team = Team::find($team_id);
         $reassessments = Reassessment::where('team_id', '=', $team->id)->whereNull('associated_assessment')->get();
-        $saveds = Assessment::where('team_id','=', $team_id)->where('inactive','<>', 1)->whereNull('submit_date')->get();
-        $submitteds = Assessment::where('team_id','=', $team_id)->where('inactive','<>', 1)->whereNotNull('submit_date')->get();
-//        $team = \App\Team::find($team_id);
+        $saveds = Assessment::where('team_id','=', $team_id)->whereNull('submit_date')->get();
+        $submitteds = Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
 //dd($reassessments);
+        if($team->final)
+            return view('dashboard.final', compact('assessor','team','saveds','submitteds','reassessments'));
         return view('dashboard.one_team', compact('assessor','team','saveds','submitteds','reassessments'));
     }
 
