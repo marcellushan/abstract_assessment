@@ -111,7 +111,8 @@ $teams = Team::get();
         $goals = Goal::where('inactive','<>', 1)->get();
         $slos = Slo::where('team_id', '=', $team->id)->where('inactive','<>', 1)->get();
 //        dd($assessment);
-        return view('assessment.edit')->with(compact('assessment','team','assessor','selected_goal','goals','courses','selected_slo','slos'));
+        return view('assessment.edit')->with(compact('assessment','team','assessor','selected_goal'
+        ,'goals','courses','selected_slo','slos'));
     }
 
     /**

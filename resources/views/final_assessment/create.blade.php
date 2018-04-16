@@ -110,6 +110,8 @@
                 <textarea class="form-control" rows="5" name="actions" id="use" required <? echo (@$_POST['save'] ? 'readonly' :'') ?>><? echo $assessment->recommended_actions ?></textarea>
             </div>
 <input type="submit">
-
-
+        </div>
+            </form>
+    </div>
+        @include('partials.dashboard_link')
 @endsection

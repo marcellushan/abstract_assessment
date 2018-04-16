@@ -14,11 +14,9 @@
         @include('partials.text', ['label' => 'Method of Outcome Assessment','name' => 'assessment','field' => 'method'])
         @include('partials.text', ['label' => 'Performance Measure','name' => 'assessment','field' => 'measure'])
         <br>
-            <form action="{{URL::to('/')}}/final_assessment/{{$finalAssessment->id}}" method="post" id="assessment">
+            <form action="{{URL::to('/')}}/final_assessment" method="post" id="assessment">
                 {{ csrf_field() }}
-                {{Form::hidden('_method', 'PUT')}}
-
-                <div class="mybox">
+        <div class="mybox">
             <div class="total">Summary of Data Collected<br>(Performance Results)</div>
                 <br>
             <div class="total">Campus:</div>
@@ -28,13 +26,13 @@
                     <td>
                         <div class="form-group">
                             <label for="usr">Floyd:</label>
-                            <input type="text" class="form-control" id="floyd" name="floyd" value="{{$finalAssessment->floyd}}" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
+                            <input type="text" class="form-control" id="floyd" name="floyd" value="<? echo $assessment->floyd ?>" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="usr">Cartersville:</label>
-                            <input type="text" class="form-control" id="cartersville" name="cartersville" value="{{$finalAssessment->cartersville}}" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?>required >
+                            <input type="text" class="form-control" id="cartersville" name="cartersville" value="<? echo $assessment->cartersville ?>" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?>required >
                         </div>
                     </td>
                 </tr>
@@ -42,13 +40,13 @@
                     <td>
                         <div class="form-group">
                             <label for="usr">Paulding:</label>
-                            <input type="text" class="form-control" id="paulding" name="paulding" value="{{$finalAssessment->paulding}}" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
+                            <input type="text" class="form-control" id="floyd" name="floyd" value="<? echo $assessment->floyd ?>" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="usr">Marietta:</label>
-                            <input type="text" class="form-control" id="marietta" name="marietta" value="{{$finalAssessment->marietta}}" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?>required >
+                            <input type="text" class="form-control" id="cartersville" name="cartersville" value="<? echo $assessment->cartersville ?>" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?>required >
                         </div>
                     </td>
                 </tr>
@@ -56,13 +54,13 @@
                     <td>
                         <div class="form-group">
                             <label for="usr">Douglasville:</label>
-                            <input type="text" class="form-control" id="douglasville" name="douglasville" value="{{$finalAssessment->douglasville}}" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
+                            <input type="text" class="form-control" id="floyd" name="floyd" value="<? echo $assessment->floyd ?>" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <label for="usr">Heritage Hall:</label>
-                            <input type="text" class="form-control" id="heritage" name="heritage" value="{{$finalAssessment->heritage}}" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?>required >
+                            <input type="text" class="form-control" id="cartersville" name="cartersville" value="<? echo $assessment->cartersville ?>" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?>required >
                         </div>
                     </td>
                 </tr>
@@ -70,7 +68,7 @@
                     <td>
                         <div class="form-group">
                             <label for="usr">eLearning:</label>
-                            <input type="text" class="form-control" id="elearning" name="elearning" value="{{$finalAssessment->elearning}}" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
+                            <input type="text" class="form-control" id="floyd" name="floyd" value="<? echo $assessment->floyd ?>" placeholder="Enter campus results, if applicable"  <? echo (@$_POST['save'] ? 'readonly' :'') ?> required >
                         </div>
                     </td>
                 </tr>
@@ -78,7 +76,7 @@
                     <td colspan="2">
                         <div class="form-group">
                             <label for="total"><div class="total">Summary of Data Collected</div></label>
-                            <textarea class="form-control" id="total" rows="3" name="data_summary"  required <? echo (@$_POST['save'] ? 'readonly' :'') ?>>{{$finalAssessment->data_summary}}</textarea>
+                            <textarea class="form-control" id="total" rows="3" name="data_summary"  required <? echo (@$_POST['save'] ? 'readonly' :'') ?>><? echo $assessment->data_summary ?></textarea>
                         </div>
                     </td>
                 </tr>
@@ -108,11 +106,9 @@
             <div class="form-group">
 
                 <div class="total">Use of Results</div>
-                <textarea class="form-control" rows="5" name="actions" id="use" required <? echo (@$_POST['save'] ? 'readonly' :'') ?>>{{$finalAssessment->actions}}</textarea>
+                <textarea class="form-control" rows="5" name="recommended_actions" id="use" required <? echo (@$_POST['save'] ? 'readonly' :'') ?>><? echo $assessment->recommended_actions ?></textarea>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">Update Assessment</button>
-        </div>
-            </form>
-    </div>
-        @include('partials.dashboard_link')
+<input type="submit">
+
+
 @endsection

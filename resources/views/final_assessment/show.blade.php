@@ -83,5 +83,20 @@
             </table>
 
 
-
+        @if( ! $finalAssessment->submitted)
+            <h2><a href="{{URL::to('/')}}/final_assessment/{{$finalAssessment->id}}/edit">Modify Final Assessment</a></h2>
+            {{Form::open(['url' => 'final_assessment/' . $finalAssessment->id ,'method' => 'PUT'])}}
+            {{Form::hidden('submit_date', date("Y-m-d")) }}
+            {{Form::hidden('submitted', '1')}}
+            {{--<button type="submit" class="btn btn-lg btn-primary">Submit Assessment</button>--}}
+            <button type="submit"  class="btn btn-lg btn-primary" onclick="initial_submit({{$finalAssessment->id}});" >Submit Assessment</button><p>
+                {{Form::close()}}
+                </div>
+    </div>
+                @include('partials.dashboard_link')
+                @else
+                </div>
+                </div>
+            @include('partials.dashboard_submitted_link')
+        @endif
 @endsection

@@ -38,12 +38,7 @@ class DashboardController extends Controller
 //        dd($_SESSION['nameIdentifier']);
 
         $assessor = Assessor::find($assessor_id);
-//        dd($assessor);
-//        $request->session()->put('username', $username);
-//session(['username' => $username]);
-//dd(session('username'));
         $teams = $assessor->teams;
-//        dd(count($teams));
         if(count($teams) > 1 )
             {
                 return view('dashboard.teams', compact('assessor','teams','assessments'));
@@ -68,9 +63,11 @@ class DashboardController extends Controller
             $reassessments = Reassessment::where('team_id', '=', $team->id)->whereNull('associated_assessment')->get();
             $saveds = Assessment::where('team_id', '=', $team_id)->where('submitted', '<>', 1)->get();
             $submitteds = Assessment::where('team_id', '=', $team_id)->where('submitted', '=', 1)->get();
+            $initial_completes =  Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
+
             if($team->final)
                 {
-                    return view('dashboard.final', compact('assessor', 'team', 'saveds', 'submitteds', 'reassessments'));
+                    return view('dashboard.final', compact('assessor','team','initial_completes'));
                 }
             else {
                 return view('dashboard.assessor', compact('assessor', 'team', 'saveds', 'submitteds', 'reassessments'));
