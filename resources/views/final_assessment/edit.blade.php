@@ -89,19 +89,13 @@
                         <div class="total">Summary of Assessment Results</div>
                     </td>
                     <td>
-                        <div class="col-md-7">
-                            <div class="radio">
-                                <label><input type="radio" name="results" value="4" <? if(@$_POST['save']){if(@$_POST['results']==4) echo 'checked';} else {if($assessment->results==4) echo 'checked';} ?> required >Exceeded Outcome</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="results" value="3" <? if(@$_POST['save']){if(@$_POST['results']==3) echo 'checked';} else {if($assessment->results==3) echo 'checked';} ?>  required >Meeting Outcome</label>
-                            </div><div class="radio">
-                                <label><input type="radio" name="results" value="2" <? if(@$_POST['save']){if(@$_POST['results']==2) echo 'checked';} else {if($assessment->results==2) echo 'checked';} ?> required >Approaching Outcome</label>
-                            </div>
-                            <div class="radio">
-                                <label><input type="radio" name="results" value="1" <? if(@$_POST['save']){if(@$_POST['results']==1) echo 'checked';} else {if($assessment->results==1) echo 'checked';} ?> required >Not Meeting Outcome</label>
-                            </div>
-                        </div>
+                        @foreach($results as $result)
+                        @if($result->id == $finalAssessment->results)
+                        {{Form::radio('results', $result->id, true)}} {{$result->name}}</br>
+                        @else
+                        {{Form::radio('results', $result->id, false)}} {{$result->name}}</br>
+                        @endif
+                        @endforeach
                     </td>
                 </tr>
             </table>
