@@ -39,7 +39,7 @@ class FinalAssessmentController extends Controller
         $selected_goal = Goal::find($assessment->goal_id);
         $selected_course= Course::find($assessment->course_id);
         $selected_slo = Slo::find($assessment->slo_id);
-        dd($assessment);
+//        dd($assessment);
         return view('final_assessment.create')->with(compact('assessment','team','assessor',
         'selected_goal','selected_course','selected_slo'));
 
@@ -77,7 +77,7 @@ class FinalAssessmentController extends Controller
         $selected_course= Course::find($assessment->course_id);
         $selected_slo = Slo::find($assessment->slo_id);
 
-        dd($finalAssessment);
+//        dd($finalAssessment);
         return view('final_assessment.show')->with(compact('finalAssessment','assessment','team','assessor','selected_goal','selected_slo'
             ,'selected_course'));
     }

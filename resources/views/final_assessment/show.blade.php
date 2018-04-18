@@ -83,7 +83,7 @@
             </table>
 
 
-        @if( ! $finalAssessment->submitted)
+        @if( ! $assessment->final_submitted)
             <h2><a href="{{URL::to('/')}}/final_assessment/{{$finalAssessment->id}}/edit">Modify Final Assessment</a></h2>
             {{Form::open(['url' => 'final_assessment/' . $finalAssessment->id ,'method' => 'PUT'])}}
             {{Form::hidden('submit_date', date("Y-m-d")) }}

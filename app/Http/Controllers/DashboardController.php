@@ -61,10 +61,12 @@ class DashboardController extends Controller
 //            dd(session('username'));
             $team = Team::find($team_id);
             $reassessments = Reassessment::where('team_id', '=', $team->id)->whereNull('associated_assessment')->get();
-            $saveds = Assessment::where('team_id', '=', $team_id)->where('submitted', '<>', 1)->get();
+            $saveds = Assessment::where('team_id', '=', $team_id)->whereNull('submitted')->orWhere('submitted', '=', 0)->get();
+//            $saveds = Assessment::where('team_id', '=', $team_id)->get();
+
             $submitteds = Assessment::where('team_id', '=', $team_id)->where('submitted', '=', 1)->get();
             $initial_completes =  Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();
-
+//dd($saveds);
             if($team->final)
                 {
                     return view('dashboard.final', compact('assessor','team','initial_completes'));
