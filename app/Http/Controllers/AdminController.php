@@ -81,9 +81,13 @@ class AdminController extends Controller
      */
     public function showAssessments()
     {
-        $teams = Team::orderBy('name')->get();
+//        $teams = Team::orderBy('name')->get();
+        $initialTeams = Team::whereNull('final')->orWhere('final', '=', 0)->get();
+        $finalTeams = Team::where('final', '=', 1)->get();
 
-        return view('admin.show_assessments')->with(compact('teams'));
+
+
+        return view('admin.show_assessments')->with(compact('initialTeams','finalTeams'));
     }
 
     public function deactivateAssessment()

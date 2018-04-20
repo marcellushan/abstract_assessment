@@ -8,18 +8,36 @@
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-condensed"  style="width:40%; margin-left: auto; margin-right: auto;">
 <tr>
-    <th>Unit</th>
-    <th align="center"><div style="text-align: center"> Initial</div></th>
-    <th align="center"><div style="text-align: center"> Final</div></th>
+    <th>Unit Final</th>
+    <th align="center"><div style="text-align: center"> Assessments</div></th>
+    {{--<th align="center"><div style="text-align: center"> Final</div></th>--}}
 </tr>
-@foreach($teams as $team)
+@foreach($finalTeams as $finalTeam)
 <tr>
-    <td>{{$team->name}}</td>
-   <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('submitted', '=', 1))}}</a></td>
-    <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('final_submitted', '=', 1))}}</a></td>
+    <td>{{$finalTeam->name}}</td>
+   <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$finalTeam->id}}"> {{count($finalTeam->assessments->where('submitted', '=', 1))}}</a></td>
+    {{--<td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('final_submitted', '=', 1))}}</a></td>--}}
 </tr>
 @endforeach
 </table>
+{{--</div>--}}
+    {{--<div class="well">--}}
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-condensed"  style="width:40%; margin-left: auto; margin-right: auto;">
+                <tr>
+                    <th>Unit Initial</th>
+                    <th align="center"><div style="text-align: center"> Assessments</div></th>
+                    {{--<th align="center"><div style="text-align: center"> Final</div></th>--}}
+                </tr>
+                @foreach($initialTeams as $initialTeam)
+                    <tr>
+                        <td>{{$initialTeam->name}}</td>
+                        <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$initialTeam->id}}"> {{count($initialTeam->assessments->where('submitted', '=', 1))}}</a></td>
+                        {{--<td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('final_submitted', '=', 1))}}</a></td>--}}
+                    </tr>
+                @endforeach
+            </table>
+        </div>
 </div>
 </div>
 <div class="well">
