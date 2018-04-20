@@ -116,8 +116,10 @@ class ReportingController extends Controller
         $selected_goal = Goal::find($assessment->goal_id);
         $selected_course = Course::find($assessment->course_id);
         $selected_slo = Slo::find($assessment->slo_id);
-
-//        dd($selected_goal);
+        if($assessment->finalAssessment) {
+            $finalAssessment = $assessment->finalAssessment;
+            return view('reporting.final_print')->with(compact('assessment', 'team', 'assessor', 'selected_goal', 'selected_slo', 'selected_course','finalAssessment'));
+        }
         return view('reporting.print')->with(compact('assessment', 'team', 'assessor', 'selected_goal', 'selected_slo', 'selected_course'));
     }
 }

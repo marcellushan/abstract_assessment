@@ -54,7 +54,6 @@
         <p>No Assessments</p>
     @endforelse
 </table>
-            {{--@if(count($initial_completes) > 0)--}}
                 <h3> Completed Final Assessments</h3>
                 <table class="table table-condensed">
                     <tr>

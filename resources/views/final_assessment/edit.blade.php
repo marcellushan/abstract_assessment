@@ -19,9 +19,9 @@
                 {{Form::hidden('_method', 'PUT')}}
 
                 <div class="mybox">
-            <div class="total">Summary of Data Collected<br>(Performance Results)</div>
+            <h2>Summary of Data Collected<br>(Performance Results)</h2></div>
                 <br>
-            <div class="total">Campus:</div>
+            <h3>Campus:</h3>
             <br>
             <table class="table">
                 <tr>
@@ -77,16 +77,16 @@
                 <tr>
                     <td colspan="2">
                         <div class="form-group">
-                            <label for="total"><div class="total">Summary of Data Collected</div></label>
+                            <label for="total"><h3>Summary of Data Collected</h3></label>
                             <textarea class="form-control" id="total" rows="3" name="data_summary"  required <? echo (@$_POST['save'] ? 'readonly' :'') ?>>{{$finalAssessment->data_summary}}</textarea>
                         </div>
                     </td>
                 </tr>
             </table>
-            <table width="40%">
+            <table width="60%">
                 <tr>
                     <td>
-                        <div class="total">Summary of Assessment Results</div>
+                        <h3>Summary of Assessment Results</h3>
                     </td>
                     <td>
                         @foreach($results as $result)
@@ -101,7 +101,7 @@
             </table>
             <div class="form-group">
 
-                <div class="total">Use of Results</div>
+                <h3>Use of Results</h3>
                 <textarea class="form-control" rows="5" name="actions" id="use" required <? echo (@$_POST['save'] ? 'readonly' :'') ?>>{{$finalAssessment->actions}}</textarea>
             </div>
             <button type="submit" class="btn btn-lg btn-primary">Update Assessment</button>

@@ -81,7 +81,7 @@ class AdminController extends Controller
      */
     public function showAssessments()
     {
-        $teams = Team::get();
+        $teams = Team::orderBy('name')->get();
 
         return view('admin.show_assessments')->with(compact('teams'));
     }

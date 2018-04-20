@@ -135,12 +135,11 @@ class FinalAssessmentController extends Controller
     public function submit(Request $request, $assessment_id)
     {
 //        $data = $request->except('_token','_method','submitted','submit_date');
-//        $finalAssessment->update($data);
         $assessment = Assessment::find($assessment_id);
+        $finalAssessment = $assessment->finalAssessment;
         $assessment->final_submitted = 1;
         $assessment->final_submit_date = date("Y-m-d");
         $assessment->update();
-        dd($assessment);
         return redirect('final_assessment/' . $finalAssessment->id);
     }
 
