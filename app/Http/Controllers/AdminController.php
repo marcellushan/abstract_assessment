@@ -10,6 +10,7 @@ use App\Team;
 use App\Goal;
 use App\Course;
 use App\Slo;
+use App\Result;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -49,12 +50,17 @@ class AdminController extends Controller
         $team = Team::find($assessment->team_id);
         $assessor = Assessor::find($assessment->assessor_id);
         $selected_goal = Goal::find($assessment->goal_id);
+        $selected_course = Course::find($assessment->course_id);
+
         $courses = Course::get();
         $selected_slo = Slo::find($assessment->slo_id);
         $goals = Goal::get();
         $slos = Slo::where('team_id', '=', $team->id)->get();
+        $finalAssessment = $assessment->finalAssessment;
+        $results = Result::get();
 //        dd($team);
-        return view('admin.edit')->with(compact('assessment','team','assessor','selected_goal','goals','courses','selected_slo','slos'));
+        return view('admin.edit')->with(compact('assessment','team','assessor','selected_goal','goals','selected_course',
+        'courses','selected_slo','slos','finalAssessment','results'));
     }
 
     /**
@@ -111,9 +117,11 @@ class AdminController extends Controller
         $selected_goal = Goal::find($assessment->goal_id);
         $selected_course= Course::find($assessment->course_id);
         $selected_slo = Slo::find($assessment->slo_id);
+        $finalAssessment = $assessment->finalAssessment;
+//        dd($finalAssessment);
 
 //        dd($selected_goal);
-        return view('admin.show')->with(compact('assessment','team','assessor','selected_goal','selected_slo','selected_course'));
+        return view('admin.show')->with(compact('assessment','team','assessor','selected_goal','selected_slo','selected_course','finalAssessment'));
     }
 
         public function team($id, $status)

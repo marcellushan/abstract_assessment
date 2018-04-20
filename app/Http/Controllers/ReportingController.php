@@ -55,11 +55,11 @@ class ReportingController extends Controller
         $finalAssessment = $assessment->finalAssessment;
 
 //        dd($finalAssessment);
-        if($assessment->final_submitted)
-            return view('reporting.final_show')->with(compact('assessment','team',
-            'assessor','selected_goal','selected_slo','selected_course','finalAssessment'));
+//        if($assessment->final_submitted)
+//            return view('reporting.final_show')->with(compact('assessment','team',
+//            'assessor','selected_goal','selected_slo','selected_course','finalAssessment'));
         return view('reporting.show')->with(compact('assessment','team',
-        'assessor','selected_goal','selected_slo','selected_course'));
+        'assessor','selected_goal','selected_slo','selected_course','finalAssessment'));
 
     }
 
