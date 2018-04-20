@@ -62,7 +62,7 @@
                 'field' => 'actions','record_type' => 'finalAssessment'])
                 <button type="submit" class="btn btn-lg btn-primary">Save Assessment</button>
             </form>
-            </div>
+            {{--</div>--}}
         {{--</div>--}}
         {{--</div>--}}
 
