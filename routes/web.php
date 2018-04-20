@@ -136,6 +136,8 @@ Route::get('no_team', 'AccessController@noTeam');
 //Route::resource('final_assessment', 'FinalAssessmentController');
 Route::resource('final_assessment', 'FinalAssessmentController', ['except' => ['create']]);
 Route::get('final_assessment/create/{assessment_id}', 'FinalAssessmentController@create');
+Route::put('final_assessment/submit/{assessment_id}', 'FinalAssessmentController@submit');
+
 
 
 

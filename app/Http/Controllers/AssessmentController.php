@@ -30,11 +30,12 @@ class AssessmentController extends Controller
 //        $assessor = Assessor::find(1);
 //        $assessor->teams()->attach(1);
 $teams = Team::get();
+$initialTeams = Team::whereNull('final')->orWhere('final', '=', 0)->get();
 //        foreach ($teams as $team)
 //            dd($team->assessments);
 //        }
 //        dd($teams);
-        return view('assessment.index')->with(compact('teams'));
+        return view('assessment.index')->with(compact('teams','initialTeams'));
 
     }
 

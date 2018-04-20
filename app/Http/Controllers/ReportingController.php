@@ -9,6 +9,7 @@ use App\Goal;
 use App\Assessor;
 use App\Course;
 use App\Slo;
+use App\FinalAssessment;
 
 class ReportingController extends Controller
 {
@@ -51,9 +52,15 @@ class ReportingController extends Controller
         $selected_goal = Goal::find($assessment->goal_id);
         $selected_course= Course::find($assessment->course_id);
         $selected_slo = Slo::find($assessment->slo_id);
+        $finalAssessment = $assessment->finalAssessment;
 
-//        dd($selected_goal);
-        return view('reporting.show')->with(compact('assessment','team','assessor','selected_goal','selected_slo','selected_course'));
+//        dd($finalAssessment);
+        if($assessment->final_submitted)
+            return view('reporting.final_show')->with(compact('assessment','team',
+            'assessor','selected_goal','selected_slo','selected_course','finalAssessment'));
+        return view('reporting.show')->with(compact('assessment','team',
+        'assessor','selected_goal','selected_slo','selected_course'));
+
     }
 
     /**

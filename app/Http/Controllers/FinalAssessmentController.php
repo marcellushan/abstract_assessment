@@ -115,7 +115,7 @@ class FinalAssessmentController extends Controller
      */
     public function update(Request $request, FinalAssessment $finalAssessment)
     {
-        $data = $request->except('_token','_method');
+        $data = $request->except('_token','_method','submitted','submit_date');
         $finalAssessment->update($data);
 //        dd($finalAssessment);
         return redirect('final_assessment/' . $finalAssessment->id);
@@ -130,6 +130,18 @@ class FinalAssessmentController extends Controller
     public function destroy(FinalAssessment $finalAssessment)
     {
         //
+    }
+
+    public function submit(Request $request, $assessment_id)
+    {
+//        $data = $request->except('_token','_method','submitted','submit_date');
+//        $finalAssessment->update($data);
+        $assessment = Assessment::find($assessment_id);
+        $assessment->final_submitted = 1;
+        $assessment->final_submit_date = date("Y-m-d");
+        $assessment->update();
+        dd($assessment);
+        return redirect('final_assessment/' . $finalAssessment->id);
     }
 
 

@@ -16,7 +16,7 @@
 <tr>
     <td>{{$team->name}}</td>
    <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('submitted', '=', 1))}}</a></td>
-    <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('submitted', '=', 2))}}</a></td>
+    <td align="center"> <a href="{{URL::to('/')}}/reporting/team/{{$team->id}}"> {{count($team->assessments->where('final_submitted', '=', 1))}}</a></td>
 </tr>
 @endforeach
 </table>
