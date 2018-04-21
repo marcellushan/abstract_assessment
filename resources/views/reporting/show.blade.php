@@ -67,6 +67,15 @@
             <button type="submit" class="btn btn-lg btn-primary">Submit Assessment</button>
         {{Form::close()}}
         @endif
+        </div>
+        <div class="well">
+        <button onclick="goBack()"  class="btn btn-lg btn-primary">Return to List</button>
 
+        <script>
 
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        </div>
 @endsection
