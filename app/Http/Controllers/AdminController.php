@@ -128,7 +128,23 @@ class AdminController extends Controller
     {
         $model = new Team;
         $record = $model::find($id);
-        ($status== 1 ? $assessment_status = 'draft' : $assessment_status = 'complete');
+
+        switch ($status) {
+            case 1:
+                $assessment_status = 'draft';
+                break;
+            case 2:
+                $assessment_status = 'complete';
+                break;
+            case 3:
+                $assessment_status = 'final_draft';
+                break;
+            case 4:
+                $assessment_status = 'final_complete';
+                break;
+        }
+
+//        ($status== 1 ? $assessment_status = 'draft' : $assessment_status = 'complete');
 //        dd($assessment_status);
         return view('admin.' . $assessment_status)->with(compact('record'));
 //        dd($record);

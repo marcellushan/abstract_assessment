@@ -109,7 +109,7 @@
                 <div class="total">Use of Results</div>
                 <textarea class="form-control" rows="5" name="actions" id="use" required <? echo (@$_POST['save'] ? 'readonly' :'') ?>><? echo $assessment->recommended_actions ?></textarea>
             </div>
-<input type="submit">
+            <button type="submit" class="btn btn-lg btn-primary">Save Assessment</button>
         </div>
             </form>
     </div>

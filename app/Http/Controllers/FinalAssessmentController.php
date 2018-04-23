@@ -57,6 +57,10 @@ class FinalAssessmentController extends Controller
         $data = $request->except('_token');
         $final_assessment = new FinalAssessment($data);
         $final_assessment->save();
+        $assessment = Assessment::find($final_assessment->assessment_id);
+        $assessment->final_saved = 1;
+//        $assessment->final_submit_date = date("Y-m-d");
+        $assessment->update();
         return redirect('final_assessment/' . $final_assessment->id);
 
     }

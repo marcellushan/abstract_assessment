@@ -55,8 +55,8 @@
                 <tr>
                     <td>
                         <h3>Summary of Assessment Results</h3>
-                    </td>
-                    <td>
+                    {{--</td>--}}
+                    {{--<td>--}}
                         @if($finalAssessment->results == 1)
                             Exceeded Outcome
                         @endif
@@ -69,7 +69,7 @@
                         @if($finalAssessment->results == 4)
                             Not Meeting Outcome
                         @endif
-                    </td>
+                    {{--</td>--}}
                 </tr>
                 <tr>
                     <td colspan="2">
