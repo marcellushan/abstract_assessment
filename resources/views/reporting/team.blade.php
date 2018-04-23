@@ -18,7 +18,8 @@
             </th>
         </tr>
         @endif
-        @forelse($record->assessments->where('submitted', '=', 1) as $assessment)
+        @if($record->final)
+        @forelse($record->assessments->where('final_submitted', '=', 1) as $assessment)
             <tr>
                 <td>
                     <a href="{{URL::to('/')}}/reporting/{{$assessment->id}}"> {{$assessment->course->name}}</a>
@@ -33,6 +34,23 @@
         @empty
             No Assessments for this team
         @endforelse
+        @else
+        @forelse($record->assessments->where('submitted', '=', 1) as $assessment)
+            <tr>
+                <td>
+                    <a href="{{URL::to('/')}}/reporting/{{$assessment->id}}"> {{$assessment->course->name}}</a>
+                </td>
+                <td>
+                    {{$assessment->slo->name}}
+                </td>
+                <td>
+                    {{$assessment->assessor->name}}
+                </td>
+            </tr>
+        @empty
+            No Assessments for this team
+        @endforelse
+        @endif
     </table>
     </div>
 @endsection
