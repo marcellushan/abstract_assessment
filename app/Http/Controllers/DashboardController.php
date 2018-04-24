@@ -54,6 +54,7 @@ class DashboardController extends Controller
     public function assessor($assessor_id)
     {
         if(session('username') ||  app('env')  == 'local')
+//        if(1 == 1)
 //            dd(session('username'));
         {
             $assessor = Assessor::find($assessor_id);
