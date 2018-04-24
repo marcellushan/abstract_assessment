@@ -10,7 +10,6 @@
         @include('partials.text', ['label' => 'Student Learning Outcome','name' => 'selected_slo','field' => 'name'])
         @include('partials.text', ['label' => 'Method of Outcome Assessment','name' => 'assessment','field' => 'method'])
         @include('partials.text', ['label' => 'Performance Measure','name' => 'assessment','field' => 'measure'])
-        more
 
         <div class="mybox">
             <h2>Summary of Data Collected<br>(Performance Results)</h2>

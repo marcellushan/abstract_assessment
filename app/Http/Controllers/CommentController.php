@@ -9,6 +9,7 @@ use App\Course;
 use App\Goal;
 use App\Slo;
 use App\Team;
+use App\FinalAssessment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -33,7 +34,7 @@ class CommentController extends Controller
 //                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.submitted = 1');
         $assessments = DB::select('SELECT DISTINCT teams.name as team_name,  teams.id as team_id
                                 FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id 
-                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.submitted = 1');
+                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.submitted = 1 order by team_name');
 //        dd($assessments);
         return view ('comment.show')->with(compact('assessments'));
 
@@ -115,6 +116,9 @@ class CommentController extends Controller
     public function byAssessment ($assessment_id)
     {
         $assessment = Assessment::find($assessment_id);
+//        $finalAssessment = FinalAssessment::find($assessment_id);
+        $finalAssessment = $assessment->finalAssessment;
+
         $assessor = Assessor::find($assessment->assessor_id);
         $team = Team::find($assessment->team_id);
         $selected_slo = Slo::find($assessment->slo_id);
@@ -122,7 +126,7 @@ class CommentController extends Controller
         $selected_goal = Goal::find($assessment->goal_id);
         $comments = Comment::where('assessment_id' ,'=', $assessment_id)->orderBy('created_at', 'desc')->get();
 //        dd($slo);
-        return view ('comment.list')->with(compact('assessment','assessor','team','selected_course','selected_slo','selected_goal','comments'));
+        return view ('comment.list')->with(compact('assessment','assessor','team','selected_course','selected_slo','selected_goal','comments','finalAssessment'));
 
     }
 
