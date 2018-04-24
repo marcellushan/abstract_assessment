@@ -18,9 +18,9 @@
                 {{ csrf_field() }}
                 <input type="hidden" name="assessment_id" value="{{$assessment->id}}" >
         <div class="mybox">
-            <div class="total">Summary of Data Collected<br>(Performance Results)</div>
+            <h2>Summary of Data Collected<br>(Performance Results)</h2></div>
                 <br>
-            <div class="total">Campus:</div>
+                <h3>Campus:</h3>
             <br>
             <table class="table">
                 <tr>
@@ -85,7 +85,7 @@
             <table width="40%">
                 <tr>
                     <td>
-                        <div class="total">Summary of Assessment Results</div>
+                        <h3>Summary of Assessment Results</h3>
                     </td>
                     <td>
                         <div class="col-md-7">
@@ -106,11 +106,11 @@
             </table>
             <div class="form-group">
 
-                <div class="total">Use of Results</div>
+                <h3>Use of Results</h3>
                 <textarea class="form-control" rows="5" name="actions" id="use" required <? echo (@$_POST['save'] ? 'readonly' :'') ?>><? echo $assessment->recommended_actions ?></textarea>
             </div>
             <button type="submit" class="btn btn-lg btn-primary">Save Assessment</button>
-        </div>
+        {{--</div>--}}
             </form>
     </div>
         @include('partials.dashboard_link')

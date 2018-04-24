@@ -105,8 +105,9 @@
                 <textarea class="form-control" rows="5" name="actions" id="use" required <? echo (@$_POST['save'] ? 'readonly' :'') ?>>{{$finalAssessment->actions}}</textarea>
             </div>
             <button type="submit" class="btn btn-lg btn-primary">Update Assessment</button>
-        </div>
+        {{--</div>--}}
             </form>
     </div>
+
         @include('partials.dashboard_link')
 @endsection

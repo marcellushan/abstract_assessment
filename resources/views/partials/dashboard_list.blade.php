@@ -9,7 +9,7 @@
                 <th width="70%">Student Learning Objective</th>
                 <th>Assessor</th>
             </tr>
-            @forelse ($saveds as $saved)
+            @forelse ($saveds->where('inactive','<>',1) as $saved)
                 <tr>
                     <td>
                         <a href="{{URL::to('/')}}/assessment/{{$saved->id}}/edit">{{ $saved->course->name }}</a>
@@ -37,7 +37,7 @@
                     <th width="70%">Student Learning Objective</th>
                     <th>Assessor</th>
                 </tr>
-                @forelse ($submitteds as $submitted)
+                @forelse ($submitteds->where('inactive','<>',1) as $submitted)
                     <tr>
                         <td>
                             <a href="{{URL::to('/')}}/assessment/{{$submitted->id}}">{{ $submitted->course->name }}</a>

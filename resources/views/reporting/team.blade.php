@@ -19,7 +19,7 @@
         </tr>
         @endif
         @if($record->final)
-        @forelse($record->assessments->where('final_submitted', '=', 1) as $assessment)
+        @forelse($record->assessments->where('inactive','<>',1)->where('final_submitted', '=', 1) as $assessment)
             <tr>
                 <td>
                     <a href="{{URL::to('/')}}/reporting/{{$assessment->id}}"> {{$assessment->course->name}}</a>
@@ -35,7 +35,7 @@
             No Assessments for this team
         @endforelse
         @else
-        @forelse($record->assessments->where('submitted', '=', 1) as $assessment)
+        @forelse($record->assessments->where('inactive','<>',1)->where('submitted', '=', 1) as $assessment)
             <tr>
                 <td>
                     <a href="{{URL::to('/')}}/reporting/{{$assessment->id}}"> {{$assessment->course->name}}</a>
