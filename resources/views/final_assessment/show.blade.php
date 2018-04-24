@@ -86,7 +86,13 @@
                 {{--{{Form::hidden('submitted', '1')}}--}}
                 <button type="submit" class="btn btn-lg btn-primary">Submit Assessment</button>
     {{Form::close()}}
+    </div>
+        </div>
+        @include('partials.dashboard_link')
+        @else
+    </div>
+    </div>
+    @include('partials.dashboard_submitted_link')
     @endif
-
 
 @endsection

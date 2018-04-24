@@ -92,7 +92,7 @@ class DashboardController extends Controller
 
 foreach ($initial_completes as $initial_complete)
 //    dd($initial_complete->finalAssessment);
-//        if($team->final)
+        if($team->final)
             return view('dashboard.final', compact('assessor','team','initial_completes'));
         return view('dashboard.one_team', compact('assessor','team','saveds','submitteds','reassessments'));
     }

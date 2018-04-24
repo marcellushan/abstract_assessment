@@ -92,7 +92,7 @@ class AdminController extends Controller
         $finalTeams = Team::where('final', '=', 1)->get();
 
 
-
+//        dd($finalTeams);
         return view('admin.show_assessments')->with(compact('initialTeams','finalTeams'));
     }
 
