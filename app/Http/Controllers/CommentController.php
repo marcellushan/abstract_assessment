@@ -134,10 +134,17 @@ class CommentController extends Controller
     {
 //            echo $team_id;
 $team = Team::find($team_id);
-$team_assessments = 'SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date
+if ($team->final)
+    $team_assessments = 'SELECT assessments.id, assessments.final_saved, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date
                                     FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id and assessments.team_id = teams.id 
+                                    and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.submitted = 1 and assessments.final_saved = 1 and teams.id = ' . $team_id;
+    else {
+        $team_assessments = 'SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date
+                                    FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id and assessments.team_id = teams.id
                                     and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.submitted = 1 and teams.id = ' . $team_id;
-$assessments = DB::select($team_assessments);
+   }
+
+        $assessments = DB::select($team_assessments);
 //        dd($assessments);
         return view ('comment.index')->with(compact('assessments','team'));
     }
