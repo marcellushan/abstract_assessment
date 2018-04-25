@@ -86,11 +86,14 @@
         @if(count($comments) > 0)
         <table border="1">
             <tr>
-                <th width="70%">
+                <th width="60%">
                     Details
                 </th>
                 <th width="10%">
                     Commenter
+                </th>
+                <th width="10%">
+                    Phase
                 </th>
                 <th width="15%">
                     Comment Date
@@ -107,6 +110,9 @@
                         {{$comment->user->name}}
                     </td>
                     <td>
+                      @if($comment->type) Final @else Initial @endif
+                    </td>
+                    <td>
                         {{$comment->created_at}}
                     </td>
                 </tr>
@@ -119,6 +125,7 @@
     <form action="{{URL::to('/')}}/comment" method="post" id="comment">
     {{ csrf_field() }}
     <input type="hidden" name="assessment_id" value="{{$assessment->id}}">
+    <input type="hidden" name="type" value="{{$team->final or 0}}">
 
     @include('partials.textbox', ['label' => 'Add Comment','name' => 'name'])
             <button type="submit" class="btn btn-lg btn-primary">Save Comment</button>

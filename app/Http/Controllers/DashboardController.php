@@ -61,7 +61,12 @@ class DashboardController extends Controller
             $team_id = $assessor->teams->pluck('id')[0];
 //            dd(session('username'));
             $team = Team::find($team_id);
-            $reassessments = Reassessment::where('team_id', '=', $team->id)->whereNull('associated_assessment')->get();
+            $reassessments = Reassessment::where('team_id', '=', $team->id)
+                ->where(function ($reassessments) {
+                    $reassessments->where('associated_assessment', '=', 0)
+                    ->orWhereNull('associated_assessment');})
+//            ->whereNull('associated_assessment')}
+              ->get();
             $saveds = Assessment::where('team_id', '=', $team_id)->whereNull('submitted')->get();
 //            $saveds = Assessment::where('team_id', '=', $team_id)->get();
 
