@@ -4,7 +4,7 @@
     <div class="title_header">Unit Leader: {{$assessor->name}}</div>
     </div>
     <div class="well">
-    <h1 align="center"><a href="javascript:history.back()">Return to Team</a></h1>
+    <h1 align="center"><a href="{{URL::to('/')}}/comment/team/{{$team->id}}">Return to Team</a></h1>
     </div>
     <div class="well">
     @include('partials.text', ['label' => 'College Goal','name' => 'selected_goal','field' => 'name'])

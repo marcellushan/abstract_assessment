@@ -1,4 +1,5 @@
 @extends('layouts.app') @section('content')
+
 <table>
     <tr>
         <th width="10%">

@@ -1,4 +1,9 @@
 @extends('layouts.app') @section('content')
+{{--</div>--}}
+    {{--<div class="well">--}}
+        <h1 align="center"><a href="{{URL::to('/')}}/comment">Return to Team List</a></h1>
+    </div>
+    <div class="well">
 
 <h2>{{$team->name}}</h2>
 <table>
