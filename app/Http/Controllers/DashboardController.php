@@ -65,10 +65,12 @@ class DashboardController extends Controller
                 ->where(function ($reassessments) {
                     $reassessments->where('associated_assessment', '=', 0)
                     ->orWhereNull('associated_assessment');})
-//            ->whereNull('associated_assessment')}
               ->get();
-            $saveds = Assessment::where('team_id', '=', $team_id)->whereNull('submitted')->get();
-//            $saveds = Assessment::where('team_id', '=', $team_id)->get();
+            $saveds = Assessment::where('team_id', '=', $team_id)
+                ->where(function ($saveds) {
+                    $saveds->where('submitted', '=', 0)
+                        ->orWhereNull('submitted');})
+                ->get();
 
             $submitteds = Assessment::where('team_id', '=', $team_id)->where('submitted', '=', 1)->get();
             $initial_completes =  Assessment::where('team_id','=', $team_id)->whereNotNull('submit_date')->get();

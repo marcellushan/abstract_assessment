@@ -30,8 +30,8 @@ class AssessmentController extends Controller
 //        $assessor = Assessor::find(1);
 //        $assessor->teams()->attach(1);
 $teams = Team::get();
-$initialTeams = Team::whereNull('final')->orWhere('final', '=', 0)->get();
-$finalTeams = Team::where('final', '=', 1)->get();
+$initialTeams = Team::whereNull('final')->orWhere('final', '=', 0)->orderBy('name')->get();
+$finalTeams = Team::where('final', '=', 1)->orderBy('name')->get();
 
 //        foreach ($teams as $team)
 //            dd($team->assessments);

@@ -82,12 +82,12 @@
                     </td>
                 </tr>
             </table>
-            <table width="40%">
+            <table width="100%">
                 <tr>
-                    <td>
+                    <td  style="width:35%">
                         <h3>Summary of Assessment Results</h3>
                     </td>
-                    <td>
+                    <td style="width:65%">
                         <div class="col-md-7">
                             <div class="radio">
                                 <label><input type="radio" name="results" value="4" <? if(@$_POST['save']){if(@$_POST['results']==4) echo 'checked';} else {if($assessment->results==4) echo 'checked';} ?> required >Exceeded Outcome</label>
