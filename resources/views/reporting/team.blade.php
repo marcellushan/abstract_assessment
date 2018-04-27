@@ -1,4 +1,9 @@
 @extends('layouts.app') @section('content')
+
+    {{--<div class="well">--}}
+        <h1 align="center"><a href="{{URL::to('/')}}">Return Home</a></h1>
+    </div>
+    <div class="well">
 <h2 align="center">Team</h2>
  <h3>   {{$record->name}}</h3>
     <h4>{{$record->mission}}</h4>
