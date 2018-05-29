@@ -100,7 +100,7 @@ class AdminController extends Controller
     {
         $assessments = DB::select('SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date 
                                 FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id 
-                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.inactive = 0');
+                                and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.inactive = 0 order by team_name');
         $inactives = DB::select('SELECT assessments.id, teams.name as team_name, assessors.name as assessor_name, course_id, courses.name as course_name, slos.name as slo_name, submit_date 
                                 FROM assessments, assessors, teams, slos, courses where assessments.assessor_id = assessors.id 
                                 and assessments.team_id = teams.id and assessments.slo_id = slos.id and assessments.course_id = courses.id and assessments.inactive = 1');
