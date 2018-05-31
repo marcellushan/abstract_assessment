@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Assessment;
 use App\Assessor;
+use App\FinalAssessment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Team;
@@ -73,8 +74,10 @@ class AdminController extends Controller
     public function update(Request $request, $assessment_id)
     {
         $assessment = Assessment::find($assessment_id);
+        $finalAssessment =$assessment->finalAssessment;
         $data = $request->except('_token','_method');
-        $assessment->update($data);
+        $finalAssessment->update($data);
+//        dd($finalAssessment);
         return redirect('admin/show_assessments');
     }
 
