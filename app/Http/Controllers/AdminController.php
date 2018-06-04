@@ -91,8 +91,8 @@ class AdminController extends Controller
     public function showAssessments()
     {
 //        $teams = Team::orderBy('name')->get();
-        $initialTeams = Team::whereNull('final')->orWhere('final', '=', 0)->get();
-        $finalTeams = Team::where('final', '=', 1)->get();
+        $initialTeams = Team::whereNull('final')->orWhere('final', '=', 0)->orderBy('name')->get();
+        $finalTeams = Team::where('final', '=', 1)->orderBy('name')->get();
 
 
 //        dd($finalTeams);
