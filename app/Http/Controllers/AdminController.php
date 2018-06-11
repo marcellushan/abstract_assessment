@@ -76,7 +76,7 @@ class AdminController extends Controller
         $assessment = Assessment::find($assessment_id);
         $finalAssessment =$assessment->finalAssessment;
         $data = $request->except('_token','_method');
-        $finalAssessment->update($data);
+        ($finalAssessment ? $finalAssessment->update($data) : $assessment->update($data));
 //        dd($finalAssessment);
         return redirect('admin/show_assessments');
     }
@@ -150,7 +150,7 @@ class AdminController extends Controller
 //        ($status== 1 ? $assessment_status = 'draft' : $assessment_status = 'complete');
 //        dd($assessment_status);
         return view('admin.' . $assessment_status)->with(compact('record'));
-//        dd($record);
+//        dd($record->assessments);
 
     }
 

@@ -4,7 +4,7 @@
     <h4>{{$record->mission}}</h4>
 
     <div class="table-responsive">
-        @if(count($record->assessments->where('submitted','=', 1) ))
+        @if(count($record->assessments->where('inactive','<>', 1)->where('final_submitted','=', 1) ))
     <table class="table table-striped table-bordered table-condensed">
         <tr>
             <th>

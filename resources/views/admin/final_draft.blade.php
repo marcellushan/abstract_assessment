@@ -24,7 +24,7 @@
             </th>
         </tr>
         @endif
-        @forelse($record->assessments->where('inactive','<>', 1)->where('final_saved','=', 1)  as $assessment)
+        @forelse($record->assessments->where('inactive','<>', 1)->where('final_saved','=', 1) ->where('final_submitted','<>',1) as $assessment)
             <tr>
                 <td>
                     {{$assessment->course->name}}
